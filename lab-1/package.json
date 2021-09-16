@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "CMPE273 lab @ SJSU - UberEats Clone",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",

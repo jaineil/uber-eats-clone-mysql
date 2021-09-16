@@ -22,8 +22,8 @@
         "quotes": ["error", "double"],
         // we want to force semicolons
         "semi": ["error", "always"],
-        // we use 2 spaces to indent our code
-        "indent": ["error", 4],
+        // we use tabs to indent our code
+        "indent": ["4", "tab"],
         // we want to avoid extraneous spaces
         "no-multi-spaces": ["error"]
       }
