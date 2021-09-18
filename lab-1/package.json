@@ -1,40 +1,46 @@
 {
-  "name": "uber-eats-clone",
-  "version": "1.0.0",
-  "description": "CMPE273 lab @ SJSU - UberEats Clone",
-  "main": "index.js",
-  "dependencies": {
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^1.7.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jaineil/cmpe-273-lab-ubereats.git"
-  },
-  "keywords": [
-    "fullstack",
-    "backend",
-    "nodejs",
-    "reactjs",
-    "mysql",
-    "mongodb",
-    "graphql",
-    "kafka"
-  ],
-  "author": "jaineil",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jaineil/cmpe-273-lab-ubereats/issues"
-  },
-  "homepage": "https://github.com/jaineil/cmpe-273-lab-ubereats#readme"
+	"name": "uber-eats-clone",
+	"version": "1.0.0",
+	"description": "CMPE273 lab @ SJSU - UberEats Clone",
+	"main": "index.js",
+	"type": "module",
+	"dependencies": {
+		"mysql": "^2.18.1"
+	},
+	"devDependencies": {
+		"body-parser": "^1.19.0",
+		"eslint": "^7.32.0",
+		"eslint-config-airbnb": "^18.2.1",
+		"eslint-plugin-import": "^2.24.2",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-react": "^7.25.1",
+		"eslint-plugin-react-hooks": "^1.7.0",
+		"express": "^4.17.1",
+		"nodemon": "^2.0.12"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js",
+		"start": "nodemon --experimental-modules index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jaineil/cmpe-273-lab-ubereats.git"
+	},
+	"keywords": [
+		"fullstack",
+		"backend",
+		"nodejs",
+		"reactjs",
+		"mysql",
+		"mongodb",
+		"graphql",
+		"kafka"
+	],
+	"author": "jaineil",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jaineil/cmpe-273-lab-ubereats/issues"
+	},
+	"homepage": "https://github.com/jaineil/cmpe-273-lab-ubereats#readme"
 }
