@@ -1,13 +1,18 @@
-const mysql = require("mysql");
+import express from "express";
+import bodyParser from "body-parser";
+import { customerRoutes } from "./routes/customerRoutes.js";
 
-const connection = mysql.createConnection({
-	host: "uber-eats-clone.ckjsjavkgqyy.us-east-2.rds.amazonaws.com",
-	user: "admin",
-	password: "cmpe273_lab",
-	database: "uber-eats",
-});
+const app = express();
 
-connection.connect((err) => {
-	if (err) throw err;
-	console.log("Connected!");
+app.use(express.json());
+app.use(
+	express.urlencoded({
+		extended: false,
+	})
+);
+
+app.use(customerRoutes);
+
+const server = app.listen(3000, () => {
+	console.log("Server listening on port 3000");
 });
