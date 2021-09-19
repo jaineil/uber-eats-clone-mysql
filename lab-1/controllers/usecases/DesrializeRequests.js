@@ -1,7 +1,8 @@
 import { CustomerEntity } from "../entities/CustomerEntity.js";
+import { RestaurantEntity } from "../entities/RestaurantEntity.js";
 
 export class DeserializeRequests {
-	customers = (req) => {
+	createCustomers = (req) => {
 		// validate here
 
 		return new CustomerEntity(
@@ -11,6 +12,20 @@ export class DeserializeRequests {
 			req.body.dateOfBirth,
 			req.body.emailId,
 			req.body.mobileNumber
+		);
+	};
+
+	createRestaurants = (req) => {
+		// validate here
+
+		return new RestaurantEntity(
+			req.body.name,
+			req.body.description,
+			req.body.cuisine,
+			req.body.mobileNumber,
+			req.body.opensAt,
+			req.body.closesAt,
+			req.body.pickupOption
 		);
 	};
 }

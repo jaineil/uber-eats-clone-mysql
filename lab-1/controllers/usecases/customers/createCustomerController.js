@@ -1,10 +1,10 @@
-import { DeserializeRequests } from "./DesrializeRequests.js";
-import { CustomerTable } from "../../models/Customer.js";
+import { DeserializeRequests } from "../DesrializeRequests.js";
+import { CustomerTable } from "../../../models/Customer.js";
 
 export const createCustomer = (req, res) => {
 	console.log(req.body);
 	const deserializeRequests = new DeserializeRequests();
-	const customerEntity = deserializeRequests.customers(req);
+	const customerEntity = deserializeRequests.createCustomers(req);
 	console.log(JSON.stringify(customerEntity));
 	const customerObject = {
 		username: customerEntity.username,
