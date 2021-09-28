@@ -10,8 +10,9 @@ export class DeserializeRequests {
 			req.body.firstName,
 			req.body.lastName,
 			req.body.dateOfBirth,
+			req.body.mobileNumber,
 			req.body.emailId,
-			req.body.mobileNumber
+			req.body.password
 		);
 	};
 

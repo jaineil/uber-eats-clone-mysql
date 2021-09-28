@@ -4,14 +4,16 @@ export class CustomerEntity {
 		firstName,
 		lastName,
 		dateOfBirth,
+		mobileNumber,
 		emailId,
-		mobileNumber
+		password
 	) {
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
-		this.emailId = emailId;
 		this.mobileNumber = mobileNumber;
+		this.emailId = emailId;
+		this.password = password;
 	}
 }
