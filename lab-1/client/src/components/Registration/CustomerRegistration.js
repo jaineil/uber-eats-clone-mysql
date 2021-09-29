@@ -1,5 +1,16 @@
 import React, { useState } from "react";
+import {
+	Container,
+	Row,
+	Col,
+	Form,
+	Button,
+	FormLabel,
+	FormControl,
+	FormGroup,
+} from "react-bootstrap";
 import Axios from "axios";
+import "./CustomerRegistration.component.css";
 
 export const CustomerRegistration = (props) => {
 	console.log(JSON.stringify(props));
@@ -34,103 +45,113 @@ export const CustomerRegistration = (props) => {
 	};
 
 	return (
-		<div className="cover-user">
-			<div className="detail">
-				<h2>Let's setup your account!</h2>
-				<h6>
-					Already have an account?{" "}
-					<button>
-						<a href="/userSignIn">Login</a>
-					</button>
-				</h6>
-			</div>
+		<Container fluid>
+			<Row>
+				<Col>
+					<h1 className="text">Customer Registration</h1>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<Form onSubmit={createAccount} className="p2">
+						<FormGroup>
+							<FormLabel>Username: </FormLabel>
+							<FormControl
+								//className="registration-form"
+								type="text"
+								name="username"
+								onChange={(e) => {
+									setUserName(e.target.value);
+								}}
+								placeholder="eg. johndoe"
+								required
+							/>
+						</FormGroup>
 
-			<form className="form-user-signup" onSubmit={createAccount}>
-				<h2 className="logo">
-					<span id="one">Uber</span>
-					<span id="two">Eats</span>
-				</h2>
+						<FormGroup>
+							<FormLabel>First Name: </FormLabel>
+							<FormControl
+								type="text"
+								name="firstName"
+								onChange={(e) => {
+									setFirstName(e.target.value);
+								}}
+								placeholder="eg. John"
+								required
+							/>
+						</FormGroup>
 
-				<label htmlFor="username">Username </label>
-				<input
-					type="text"
-					name="username"
-					onChange={(e) => {
-						setUserName(e.target.value);
-					}}
-					placeholder="eg. johndoe"
-					required
-				/>
+						<FormGroup>
+							<FormLabel>Last Name: </FormLabel>
+							<FormControl
+								type="text"
+								name="lastName"
+								onChange={(e) => {
+									setLastName(e.target.value);
+								}}
+								placeholder="eg. Doe"
+								required
+							/>
+						</FormGroup>
 
-				<label htmlFor="firstName">First Name </label>
-				<input
-					type="text"
-					name="firstName"
-					onChange={(e) => {
-						setFirstName(e.target.value);
-					}}
-					placeholder="eg. John"
-					required
-				/>
+						<FormGroup>
+							<FormLabel>Date of Birth: </FormLabel>
+							<FormControl
+								type="date"
+								name="dateOfBirth"
+								onChange={(e) => {
+									setDateOfBirth(e.target.value);
+								}}
+								required
+							/>
+						</FormGroup>
 
-				<label htmlFor="lastName">Last Name </label>
-				<input
-					type="text"
-					name="lastName"
-					onChange={(e) => {
-						setLastName(e.target.value);
-					}}
-					placeholder="eg. Doe"
-					required
-				/>
+						<FormGroup>
+							<FormLabel>Mobile Number: </FormLabel>
+							<FormControl
+								type="tel"
+								name="mobileNumber"
+								onChange={(e) => {
+									setMobileNumber(e.target.value);
+								}}
+								placeholder="XXX-XXX-XXXX"
+								required
+							/>
+						</FormGroup>
 
-				<label htmlFor="dateOfBirth">Date of Birth </label>
-				<input
-					type="date"
-					name="dateOfBirth"
-					onChange={(e) => {
-						setDateOfBirth(e.target.value);
-					}}
-					required
-				/>
+						<FormGroup>
+							<FormLabel>Email ID: </FormLabel>
+							<FormControl
+								type="email"
+								name="emailId"
+								onChange={(e) => {
+									setEmail(e.target.value);
+								}}
+								placeholder="XXX-XXX-XXXX"
+								required
+							/>
+						</FormGroup>
 
-				<label htmlFor="mobileNumber">Mobile Number </label>
-				<input
-					type="tel"
-					name="mobileNumber"
-					onChange={(e) => {
-						setMobileNumber(e.target.value);
-					}}
-					//pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-					required
-				/>
-
-				<label htmlFor="emailId">Email</label>
-				<input
-					type="email"
-					name="emailId"
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-					pattern="[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-					placeholder="eg. john.doe@anymail.com"
-					required
-				/>
-
-				<label htmlFor="password">Password</label>
-				<input
-					type="password"
-					name="password"
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-					// pattern="(?=.[A-Z])(?=.[a-z])(?=.[0-9])(?=.[$%!@#+^&*]).{8,}"
-					placeholder="xxxxxxxx"
-					required
-				/>
-
-				<button type="submit">Create Account</button>
-			</form>
-		</div>
+						<FormGroup>
+							<FormLabel>Password: </FormLabel>
+							<FormControl
+								type="password"
+								name="password"
+								onChange={(e) => {
+									setPassword(e.target.value);
+								}}
+								required
+							/>
+						</FormGroup>
+						<br />
+						<FormGroup>
+							<Button variant="primary" type="submit">
+								Submit
+							</Button>
+						</FormGroup>
+					</Form>
+				</Col>
+			</Row>
+		</Container>
 	);
 };

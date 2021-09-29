@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Main from "./components/Main";
+import Main from "./pages/Main";
 import { BrowserRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //App Component
 export default class App extends Component {
