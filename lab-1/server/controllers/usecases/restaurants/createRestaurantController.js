@@ -28,15 +28,11 @@ export const createRestaurant = (req, res) => {
 	const restaurantTable = new RestaurantTable();
 
 	restaurantTable.create(restaurantObject, (err, data) => {
-		try {
-			if (err) {
-				console.error(err);
-				res.status(500).send("Error when creating a restaurant");
-			} else {
-				res.send(data);
-			}
-		} catch (err) {
-			console.error(`Could not create new restaurant, ${err}`);
+		if (err) {
+			console.error(err);
+			res.status(500).send("Error when creating a restaurant");
+		} else {
+			res.send(data);
 		}
 	});
 };
