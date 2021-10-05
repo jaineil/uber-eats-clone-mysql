@@ -9,11 +9,14 @@ import {
 	FormControl,
 	FormGroup,
 } from "react-bootstrap";
+import { useHistory } from "react-router";
 import Axios from "axios";
-import "./CustomerRegistration.component.css";
+import { Link } from "react-router-dom";
+import "./Registration.component.css";
 
 export const CustomerRegistration = (props) => {
 	console.log(JSON.stringify(props));
+	const history = useHistory();
 
 	const [username, setUserName] = useState("");
 	const [firstName, setFirstName] = useState("");
@@ -39,6 +42,7 @@ export const CustomerRegistration = (props) => {
 		try {
 			await Axios.post("http://localhost:3000/createCustomer", payload);
 			console.log("Successfully registered");
+			history.push("/customerSignin");
 		} catch (err) {
 			console.error("Error when registering new customer => ", err);
 		}
@@ -144,10 +148,24 @@ export const CustomerRegistration = (props) => {
 							/>
 						</FormGroup>
 						<br />
-						<FormGroup>
-							<Button variant="primary" type="submit">
-								Submit
-							</Button>
+						<FormGroup className="mb-3">
+							<Row>
+								<Col>
+									<Button variant="primary" type="submit">
+										Submit
+									</Button>
+								</Col>
+								<Col>
+									<Button variant="primary">
+										<Link
+											to="customerSignin"
+											className="submit-button"
+										>
+											Go to login
+										</Link>
+									</Button>
+								</Col>
+							</Row>
 						</FormGroup>
 					</Form>
 				</Col>
