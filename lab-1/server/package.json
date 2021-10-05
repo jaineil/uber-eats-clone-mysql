@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"dependencies": {
+		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
 		"express-session": "^1.17.2",
 		"mysql": "^2.18.1"

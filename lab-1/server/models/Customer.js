@@ -1,3 +1,4 @@
+import { response } from "express";
 import { sql } from "./config/db.js";
 
 export class CustomerTable {
@@ -24,6 +25,28 @@ export class CustomerTable {
 			console.log(`1 record inserted => ${JSON.stringify(res)}`);
 			result(null, {
 				customerId: res.insertId,
+				...data,
+			});
+		});
+	};
+
+	validateCredentials = (data, result) => {
+		const query = `SELECT 
+						USER_PASSWORD 
+					FROM 
+						CUSTOMER 
+					WHERE 
+						EMAIL_ID="${data.emailId}";`;
+
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			console.log(`1 record fetched => ${JSON.stringify(res)}`);
+			result(null, {
+				fetchedPassword: res[0].USER_PASSWORD,
 				...data,
 			});
 		});

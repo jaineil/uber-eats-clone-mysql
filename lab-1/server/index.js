@@ -1,11 +1,14 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import session from "express-session";
 import { customerRoutes } from "./routes/customerRoutes.js";
 import { restaurantRoutes } from "./routes/restaurantRoutes.js";
+import { dishRoutes } from "./routes/dishRoutes.js";
 
 const app = express();
 app.use(cors({ origin: "http://localhost:3001", credentials: true }));
+app.use(cookieParser());
 
 app.use(
 	session({
@@ -41,6 +44,7 @@ app.use((req, res, next) => {
 
 app.use(customerRoutes);
 app.use(restaurantRoutes);
+app.use(dishRoutes);
 
 const server = app.listen(3000, () => {
 	console.log("Server listening on port 3000");

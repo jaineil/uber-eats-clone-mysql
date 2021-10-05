@@ -13,21 +13,9 @@ export const createRestaurant = (req, res) => {
 
 	console.log(JSON.stringify(restaurantEntity));
 
-	const restaurantObject = {
-		name: restaurantEntity.name,
-		description: restaurantEntity.description,
-		cuisine: restaurantEntity.cuisine,
-		mobileNumber: restaurantEntity.mobileNumber,
-		opensAt: restaurantEntity.opensAt,
-		closesAt: restaurantEntity.closesAt,
-		pickupOption: restaurantEntity.pickupOption,
-	};
-
-	console.log(JSON.stringify(restaurantObject));
-
 	const restaurantTable = new RestaurantTable();
 
-	restaurantTable.create(restaurantObject, (err, data) => {
+	restaurantTable.create(restaurantEntity, (err, data) => {
 		if (err) {
 			console.error(err);
 			res.status(500).send("Error when creating a restaurant");
