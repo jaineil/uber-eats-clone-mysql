@@ -7,14 +7,14 @@ import { RestaurantSignin } from "./Login/RestaurantLogin.page";
 import { RestaurantDetails } from "./Ordering/RestaurantDetails.page";
 import { TempDashboard } from "../components/Dashboard/TempDashboard";
 import { OrderSummary } from "../components/Dashboard/OrderSummary";
-
+import { Welcome } from "../components/Dashboard/Welcome";
 //Main Component for routing all components
 export default class Main extends Component {
 	render() {
 		return (
 			<div>
 				{/*Render Different Component based on Route*/}
-
+				<Route path="/welcome" component={Welcome} />
 				<Route path="/customerSignup" component={CustomerSignup} />
 				<Route path="/restaurantSignup" component={RestaurantSignup} />
 				<Route path="/customerSignin" component={CustomerSignin} />
