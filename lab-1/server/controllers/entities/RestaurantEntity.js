@@ -6,6 +6,12 @@ export class RestaurantEntity {
 		description,
 		cuisine,
 		mobileNumber,
+		addrStreet,
+		addrApt,
+		addrCity,
+		addrState,
+		addrZipcode,
+		addrCountry,
 		opensAt,
 		closesAt,
 		pickupOption,
@@ -17,6 +23,12 @@ export class RestaurantEntity {
 		this.description = description;
 		this.cuisine = cuisine;
 		this.mobileNumber = mobileNumber;
+		this.addrStreet = addrStreet;
+		this.addrApt = addrApt;
+		this.addrCity = addrCity;
+		this.addrState = addrState;
+		this.addrZipcode = addrZipcode;
+		this.addrCountry = addrCountry;
 		this.opensAt = opensAt;
 		this.closesAt = closesAt;
 		this.pickupOption = pickupOption;

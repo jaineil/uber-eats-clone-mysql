@@ -30,3 +30,33 @@ export class CustomerAddressTable {
 		});
 	};
 }
+
+export class RestaurantAddressTable {
+	create = (data, result) => {
+		const query = `INSERT INTO RESTAURANT_ADDRESS 
+							(RESTAURANT_ID, HOUSE_NUMBER, STREET, CITY, STATE, COUNTRY, PINCODE) 
+						VALUES 
+							(
+								"${data.restaurantId}", 
+								"${data.addrApt}", 
+								"${data.addrStreet}", 
+								"${data.addrCity}", 
+								"${data.addrState}",
+								"${data.addrCountry}", 
+								"${data.addrZipcode}"
+						)`;
+
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			console.log(`1 record inserted => ${JSON.stringify(res)}`);
+			result(null, {
+				restaurantAddressId: res.insertId,
+				...data,
+			});
+		});
+	};
+}

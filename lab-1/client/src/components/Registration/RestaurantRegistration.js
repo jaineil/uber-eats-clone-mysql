@@ -17,7 +17,6 @@ import "./Registration.component.css";
 import { config } from "../../config/awsConfig";
 
 export const RestaurantRegistration = (props) => {
-	// console.log(JSON.stringify(props));
 	const history = useHistory();
 
 	const [name, setName] = useState("");
@@ -26,6 +25,11 @@ export const RestaurantRegistration = (props) => {
 	const [description, setDescription] = useState("");
 	const [cuisine, setCuisine] = useState("");
 	const [mobileNumber, setMobileNumber] = useState("");
+	const [street, setStreet] = useState("");
+	const [apt, setApt] = useState("");
+	const [city, setCity] = useState("");
+	const [state, setState] = useState("");
+	const [zipcode, setZipcode] = useState("");
 	const [restaurantImgLocation, setRestaurantImgLocation] = useState("");
 	const [opensAt, setOpensAt] = useState("");
 	const [closesAt, setClosesAt] = useState("");
@@ -63,6 +67,12 @@ export const RestaurantRegistration = (props) => {
 			description: description,
 			cuisine: cuisine,
 			mobileNumber: String(mobileNumber),
+			street: street,
+			apt: apt,
+			city: city,
+			state: state,
+			zipcode: zipcode,
+			country: "United States",
 			opensAt: opensAt,
 			closesAt: closesAt,
 			pickupOption: pickupOptionStatus,
@@ -89,37 +99,40 @@ export const RestaurantRegistration = (props) => {
 
 	return (
 		<Container fluid>
-			<Row>
+			<Row
+				style={{
+					paddingLeft: "50px",
+					paddingRight: "50px",
+				}}
+			>
 				<Col>
 					<h1 className="text">Register you Restaurant</h1>
 				</Col>
 			</Row>
-			<Row>
+			<Row
+				style={{
+					paddingLeft: "50px",
+					paddingRight: "500px",
+				}}
+			>
 				<Col>
 					<Form onSubmit={createAccount} className="p2">
+						<FormGroup className="mt-3">
+							<FormLabel>Restaurant Name:</FormLabel>
+							<FormControl
+								type="text"
+								name="name"
+								onChange={(e) => {
+									setName(e.target.value);
+								}}
+								placeholder="eg. Nick the Greek"
+								required
+							/>
+						</FormGroup>
 						<Row>
 							<Col>
-								<FormGroup className="mb-3">
-									<FormLabel className="labels">
-										Restaurant Name:
-									</FormLabel>
-									<FormControl
-										//className="registration-form"
-										type="text"
-										name="name"
-										onChange={(e) => {
-											setName(e.target.value);
-										}}
-										placeholder="eg. Nick the Greek"
-										required
-									/>
-								</FormGroup>
-							</Col>
-							<Col>
-								<FormGroup>
-									<FormLabel className="labels">
-										Email ID:{" "}
-									</FormLabel>
+								<FormGroup className="mt-3">
+									<FormLabel>Email ID: </FormLabel>
 									<FormControl
 										type="email"
 										name="emailId"
@@ -131,10 +144,8 @@ export const RestaurantRegistration = (props) => {
 								</FormGroup>
 							</Col>
 							<Col>
-								<FormGroup>
-									<FormLabel className="labels">
-										Password:
-									</FormLabel>
+								<FormGroup className="mt-3">
+									<FormLabel>Password:</FormLabel>
 									<FormControl
 										type="password"
 										name="password"
@@ -147,10 +158,8 @@ export const RestaurantRegistration = (props) => {
 							</Col>
 						</Row>
 
-						<FormGroup className="mb-3">
-							<FormLabel className="labels">
-								Description:
-							</FormLabel>
+						<FormGroup className="mt-3">
+							<FormLabel>Description:</FormLabel>
 							<FormControl
 								name="description"
 								as="textarea"
@@ -163,8 +172,8 @@ export const RestaurantRegistration = (props) => {
 							/>
 						</FormGroup>
 
-						<FormGroup className="mb-3">
-							<FormLabel className="labels">Cuisine: </FormLabel>
+						<FormGroup className="mt-3">
+							<FormLabel>Cuisine: </FormLabel>
 							<FormControl
 								type="text"
 								name="cuisine"
@@ -176,10 +185,8 @@ export const RestaurantRegistration = (props) => {
 							/>
 						</FormGroup>
 
-						<FormGroup className="mb-3">
-							<FormLabel className="labels">
-								Contact Number:
-							</FormLabel>
+						<FormGroup className="mt-3">
+							<FormLabel>Contact Number:</FormLabel>
 							<FormControl
 								type="tel"
 								name="mobileNumber"
@@ -191,12 +198,71 @@ export const RestaurantRegistration = (props) => {
 							/>
 						</FormGroup>
 
-						<FormGroup className="mb-3">
+						<FormGroup className="mt-3">
+							<FormLabel>Street: </FormLabel>
+							<FormControl
+								type="text"
+								placeholder="eg. 1234 Main St"
+								onChange={(e) => {
+									setStreet(e.target.value);
+								}}
+							/>
+						</FormGroup>
+
+						<FormGroup className="mt-3">
+							<FormLabel>Apartment: </FormLabel>
+							<FormControl
+								type="text"
+								placeholder="eg. Apartment, studio, or floor"
+								onChange={(e) => {
+									setApt(e.target.value);
+								}}
+							/>
+						</FormGroup>
+
+						<Row>
+							<Col>
+								<FormGroup className="mt-3">
+									<FormLabel>City: </FormLabel>
+									<FormControl
+										type="text"
+										placeholder="eg. San Jose"
+										onChange={(e) => {
+											setCity(e.target.value);
+										}}
+									/>
+								</FormGroup>
+							</Col>
+							<Col>
+								<FormGroup className="mt-3">
+									<FormLabel>State: </FormLabel>
+									<FormControl
+										type="text"
+										placeholder="eg. California"
+										onChange={(e) => {
+											setState(e.target.value);
+										}}
+									/>
+								</FormGroup>
+							</Col>
+							<Col>
+								<FormGroup className="mt-3">
+									<FormLabel>Zipcode: </FormLabel>
+									<FormControl
+										type="text"
+										placeholder="eg. California"
+										onChange={(e) => {
+											setZipcode(e.target.value);
+										}}
+									/>
+								</FormGroup>
+							</Col>
+						</Row>
+
+						<FormGroup className="mt-3">
 							<Row>
 								<Col>
-									<FormLabel className="labels">
-										Opens at:{" "}
-									</FormLabel>
+									<FormLabel>Opens at: </FormLabel>
 									<FormControl
 										type="time"
 										name="opensAt"
@@ -208,9 +274,7 @@ export const RestaurantRegistration = (props) => {
 									/>
 								</Col>
 								<Col>
-									<FormLabel className="labels">
-										Closes at:{" "}
-									</FormLabel>
+									<FormLabel>Closes at: </FormLabel>
 									<FormControl
 										type="time"
 										name="closesAt"
@@ -224,11 +288,10 @@ export const RestaurantRegistration = (props) => {
 							</Row>
 						</FormGroup>
 
-						<FormGroup className="mb-3">
+						<FormGroup className="mt-3">
 							<Row>
 								<Col>
 									<Form.Switch
-										className="labels"
 										type="switch"
 										id="form-switch"
 										label=" Select to allow pick-ups"
@@ -238,7 +301,7 @@ export const RestaurantRegistration = (props) => {
 									/>
 								</Col>
 								<Col>
-									<Form.Label className="labels">
+									<Form.Label>
 										Add restaurant image:
 									</Form.Label>
 									<Form.Control
@@ -249,7 +312,7 @@ export const RestaurantRegistration = (props) => {
 							</Row>
 						</FormGroup>
 
-						<FormGroup className="mb-3">
+						<FormGroup className="mt-3">
 							<Row>
 								<Col>
 									<Button variant="primary" type="submit">
