@@ -101,7 +101,7 @@ export const RestaurantLogin = (props) => {
 								<Col>
 									<Button variant="primary">
 										<Link
-											to="restaurantSignup1q"
+											to="restaurantSignup"
 											className="submit-button"
 										>
 											New user?

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../../components/Ord/Layout/Header";
-import Meals from "../../components/Ord/Meals/Meals";
-import Cart from "../../components/Ord/Cart/Cart";
+import Header from "../../components/Ordering/Layout/Header";
+import Meals from "../../components/Ordering/Meals/Meals";
+import Cart from "../../components/Ordering/Cart/Cart";
 import CartProvider from "../../store/CartProvider";
 import Axios from "axios";
 
