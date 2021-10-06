@@ -1,5 +1,6 @@
 import { Container, Navbar, Row, Col, Card, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
+import "./Welcome.css";
 
 export const Welcome = () => {
 	const history = useHistory();
@@ -39,6 +40,7 @@ export const Welcome = () => {
 							height: "12rem",
 							backgroundColor: "black",
 						}}
+						className="card"
 					>
 						<Card.Body>
 							<Card.Title
@@ -54,6 +56,7 @@ export const Welcome = () => {
 							<Button
 								variant="primary"
 								onClick={() => handleClick("/customerSignup")}
+								className="btn"
 							>
 								New customer? Go to sign up.
 							</Button>
@@ -74,6 +77,7 @@ export const Welcome = () => {
 							height: "12rem",
 							backgroundColor: "black",
 						}}
+						className="card"
 					>
 						<Card.Body>
 							<Card.Title
