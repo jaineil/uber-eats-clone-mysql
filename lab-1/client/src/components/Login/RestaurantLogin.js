@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
+import cookie from "react-cookies";
 import {
 	Container,
 	Row,
@@ -12,7 +12,6 @@ import {
 	FormControl,
 	FormGroup,
 } from "react-bootstrap";
-import cookie from "react-cookies";
 import Axios from "axios";
 import "../Registration/Registration.component.css";
 
@@ -42,11 +41,8 @@ export const RestaurantLogin = (props) => {
 			);
 			console.log(response);
 			console.log("Successfully login");
-
-			if (!cookie.load("cookie")) {
-				console.log("No user cookie!");
-			}
-			history.push("/temp");
+			console.log(cookie.load("restaurantId"));
+			history.push("/restaurantDashboard");
 		} catch (err) {
 			console.error(
 				"Error when logging in the restaurant owner => ",
