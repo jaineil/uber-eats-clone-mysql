@@ -1,4 +1,3 @@
-import { response } from "express";
 import { sql } from "./config/db.js";
 
 export class CustomerTable {
@@ -10,7 +9,7 @@ export class CustomerTable {
 								"${data.username}", 
 								"${data.firstName}", 
 								"${data.lastName}", 
-								"${data.dob}", 
+								"${data.dateOfBirth}", 
 								"${data.mobileNumber}",
 								"${data.emailId}", 
 								"${data.password}"
