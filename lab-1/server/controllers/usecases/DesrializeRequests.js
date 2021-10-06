@@ -6,6 +6,9 @@ import { FetchRestaurantsEntity } from "../entities/FetchRestaurantsEntity.js";
 import { FetchRestaurantMetaReqEntity } from "../entities/FetchRestaurantMetaReqEntity.js";
 import { DishEntity } from "../entities/DishEntity.js";
 import { FetchDishesReqEntity } from "../entities/FetchDishesReqEntity.js";
+import { FetchAllCustomerAddressesReqEntity } from "../entities/FetchAllCustomerAddressesReqEntity.js";
+import { CustomerNewAddressEntity } from "../entities/CustomerNewAddressEntity.js";
+import { OrderEntity } from "../entities/OrderEntity.js";
 
 export class DeserializeRequests {
 	createCustomers = (req) => {
@@ -111,6 +114,45 @@ export class DeserializeRequests {
 
 		if (req.params) {
 			return new FetchDishesReqEntity(req.query.restaurantId);
+		}
+	};
+
+	fetchAllCustomerAddresses = (req) => {
+		// validate here
+
+		if (req.params) {
+			return new FetchAllCustomerAddressesReqEntity(req.query.customerId);
+		}
+	};
+
+	addCustomerAddress = (req) => {
+		// validate here
+
+		if (req) {
+			return new CustomerNewAddressEntity(
+				req.body.customerId,
+				req.body.street,
+				req.body.apt,
+				req.body.city,
+				req.body.state,
+				req.body.zipcode,
+				req.body.country
+			);
+		}
+	};
+
+	createOrder = (req) => {
+		// validate here
+
+		if (req) {
+			return new OrderEntity(
+				req.body.restaurantId,
+				req.body.customerId,
+				req.body.time,
+				req.body.amount,
+				req.body.addressId,
+				req.body.items
+			);
 		}
 	};
 }

@@ -7,7 +7,7 @@ import CartContext from "../../../store/cart-context";
 
 const Cart = (props) => {
 	const history = useHistory();
-
+	const restaurantId = props.restaurantId;
 	const cartCtx = useContext(CartContext);
 
 	const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -40,9 +40,11 @@ const Cart = (props) => {
 		const finalState = {
 			cartItems: cartCtx.items,
 			total: totalAmount,
+			restaurantId: restaurantId,
 		};
+		sessionStorage.setItem("state", JSON.stringify(finalState));
 		// console.log(JSON.stringify(finalState));
-		history.push("/order", [finalState]);
+		history.push("/order");
 	};
 
 	return (

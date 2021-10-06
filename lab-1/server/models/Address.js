@@ -29,6 +29,18 @@ export class CustomerAddressTable {
 			});
 		});
 	};
+
+	fetchAllCustomerAddresses = (data, result) => {
+		const query = `SELECT * FROM CUSTOMER_ADDRESS WHERE CUSTOMER_ID=${data.customerId};`;
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			result(null, res);
+		});
+	};
 }
 
 export class RestaurantAddressTable {
