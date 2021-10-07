@@ -8,7 +8,10 @@ import { RestaurantDetails } from "./Ordering/RestaurantDetails.page";
 import { TempDashboard } from "../components/Dashboard/TempDashboard";
 import { OrderSummary } from "../components/Dashboard/OrderSummary";
 import { Welcome } from "../components/Dashboard/Welcome";
+import { RestaurantDashboard } from "../components/Dashboard/RestaurantDashboard";
+import { RestaurantProfile } from "../components/Profile/RestaurantProfile";
 //Main Component for routing all components
+
 export default class Main extends Component {
 	render() {
 		return (
@@ -21,6 +24,14 @@ export default class Main extends Component {
 				<Route path="/restaurantSignin" component={RestaurantSignin} />
 				<Route path="/temp" component={TempDashboard} />
 				<Route path="/chooseDish" component={RestaurantDetails} />
+				<Route
+					path="/restaurantDashboard"
+					component={RestaurantDashboard}
+				/>
+				<Route
+					path="/restaurantProfile"
+					component={RestaurantProfile}
+				/>
 				<Route path="/order" component={OrderSummary} />
 			</div>
 		);
