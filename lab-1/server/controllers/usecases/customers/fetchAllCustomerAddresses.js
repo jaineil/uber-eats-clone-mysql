@@ -18,7 +18,7 @@ export const fetchAllCustomerAddresses = async (req, res) => {
 		(err, data) => {
 			if (err) {
 				console.error(err);
-				res.status(500).send("Error when fetching dishes!");
+				res.status(500).send("Error when fetching addresses!");
 			} else {
 				console.log("Fetched addresses => ", JSON.stringify(data));
 				res.status(200).send(data);

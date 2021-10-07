@@ -2,7 +2,7 @@ import { DeserializeRequests } from "../DesrializeRequests.js";
 import { RestaurantTable } from "../../../models/Restaurant.js";
 
 export const fetchRestaurantMeta = async (req, res) => {
-	console.log("Request fetched => ", req.query);
+	console.log("Request fetched => ", req.params);
 	const deserializeRequests = new DeserializeRequests();
 	const fetchRestaurantMetaReqEntity =
 		deserializeRequests.fetchRestaurantMeta(req);

@@ -10,6 +10,8 @@ import { OrderSummary } from "../components/Dashboard/OrderSummary";
 import { Welcome } from "../components/Dashboard/Welcome";
 import { RestaurantDashboard } from "../components/Dashboard/RestaurantDashboard";
 import { RestaurantProfile } from "../components/Profile/RestaurantProfile";
+import { RestaurantMenu } from "../components/Profile/RestaurantMenu";
+import { EditDish } from "../components/Dish/EditDish";
 //Main Component for routing all components
 
 export default class Main extends Component {
@@ -32,7 +34,9 @@ export default class Main extends Component {
 					path="/restaurantProfile"
 					component={RestaurantProfile}
 				/>
+				<Route path="/restaurantMenu" component={RestaurantMenu} />
 				<Route path="/order" component={OrderSummary} />
+				<Route path="/dishes/edit/:mealId" component={EditDish} />
 			</div>
 		);
 	}

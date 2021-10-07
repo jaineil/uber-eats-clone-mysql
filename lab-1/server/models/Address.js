@@ -71,4 +71,16 @@ export class RestaurantAddressTable {
 			});
 		});
 	};
+
+	fetchRestaurantAddress = (data, result) => {
+		const query = `SELECT * FROM RESTAURANT_ADDRESS WHERE RESTAURANT_ID=${data.restaurantId};`;
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			result(null, res);
+		});
+	};
 }
