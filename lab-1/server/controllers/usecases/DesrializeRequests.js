@@ -10,6 +10,7 @@ import { FetchOneDishEntity } from "../entities/FetchOneDishEntity.js";
 import { FetchAllCustomerAddressesReqEntity } from "../entities/FetchAllCustomerAddressesReqEntity.js";
 import { CustomerNewAddressEntity } from "../entities/CustomerNewAddressEntity.js";
 import { OrderEntity } from "../entities/OrderEntity.js";
+import { UpdateOrderStatusReqEntity } from "../entities/UpdateOrderStatusReqEntity.js";
 
 export class DeserializeRequests {
 	createCustomers = (req) => {
@@ -161,6 +162,17 @@ export class DeserializeRequests {
 				req.body.amount,
 				req.body.addressId,
 				req.body.items
+			);
+		}
+	};
+
+	updateOrderStatus = (req) => {
+		// validate here
+
+		if (req) {
+			return new UpdateOrderStatusReqEntity(
+				req.body.orderId,
+				req.body.orderStatus
 			);
 		}
 	};

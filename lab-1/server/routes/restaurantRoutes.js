@@ -4,6 +4,8 @@ import { fetchRestaurantAddress } from "../controllers/usecases/restaurants/fetc
 import { fetchRestaurantMeta } from "../controllers/usecases/restaurants/fetchRestaurantMeta.js";
 import { fetchRestaurants } from "../controllers/usecases/restaurants/fetchRestaurantsController.js";
 import { restaurantSignin } from "../controllers/usecases/restaurants/restaurantSigninController.js";
+import { fetchOrders } from "../controllers/usecases/restaurants/fetchOrders.js";
+import { updateOrderStatus } from "../controllers/usecases/restaurants/updateOrderStatus.js";
 
 export const restaurantRoutes = express.Router();
 restaurantRoutes.post("/createRestaurant", createRestaurant);
@@ -14,3 +16,5 @@ restaurantRoutes.get(
 	"/fetchRestaurantAddress/:restaurantId",
 	fetchRestaurantAddress
 );
+restaurantRoutes.get("/fetchCustomerOrders/:restaurantId", fetchOrders);
+restaurantRoutes.post("/updateOrderStatus", updateOrderStatus);
