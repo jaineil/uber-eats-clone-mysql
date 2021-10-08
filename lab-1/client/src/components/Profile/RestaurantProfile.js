@@ -123,8 +123,6 @@ export const RestaurantProfile = (props) => {
 		let nonVegStatus;
 		let veganStatus;
 
-		await pushRestaurantImgToAWS(e);
-
 		pickupOption === "on"
 			? (pickupOptionStatus = true)
 			: (pickupOptionStatus = false);
@@ -177,11 +175,8 @@ export const RestaurantProfile = (props) => {
 	};
 
 	return (
-		<Container
-			fluid
-			style={{ backgroundColor: "#FFC0CB", height: "230vh" }}
-		>
-			<Navbar bg="dark">
+		<Container fluid style={{ background: "whitesmoke", height: "300vh" }}>
+			<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
 				<Container>
 					<Navbar.Brand>
 						<img

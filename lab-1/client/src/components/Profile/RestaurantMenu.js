@@ -19,6 +19,10 @@ import { uploadFile } from "react-s3";
 import { config } from "../../config/awsConfig";
 
 export const RestaurantMenu = (props) => {
+	if (!cookie.load("restaurantId")) {
+		console.error("No cookie found for session");
+	}
+
 	const [menuList, setMenuList] = useState([]);
 	const [show, setShow] = useState(false);
 
@@ -139,7 +143,14 @@ export const RestaurantMenu = (props) => {
 					</Col>
 					<Col>
 						<Link to={`/dishes/edit/${meal.ID}`}>
-							<Button variant="primary" size="sm">
+							<Button
+								variant="primary"
+								size="sm"
+								style={{
+									backgroundColor: "black",
+									border: "black",
+								}}
+							>
 								Edit
 							</Button>
 						</Link>
@@ -152,9 +163,9 @@ export const RestaurantMenu = (props) => {
 	return (
 		<Container
 			fluid
-			// style={{ backgroundColor: "#FFC0CB", height: "230vh" }}
+			style={{ backgroundColor: "whitesmoke", height: "500vh" }}
 		>
-			<Navbar variant="light" style={{ backgroundColor: "gray" }}>
+			<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
 				<Container>
 					<Navbar.Brand>
 						<img
@@ -170,8 +181,12 @@ export const RestaurantMenu = (props) => {
 
 			<Container style={{ paddingRight: "150px", paddingLeft: "40px" }}>
 				<div className="d-grid gap-2">
-					<Button variant="primary" onClick={handleShow}>
-						Add new dish
+					<Button
+						variant="primary"
+						onClick={handleShow}
+						style={{ backgroundColor: "black", border: "black" }}
+					>
+						Add a new dish
 					</Button>
 				</div>
 			</Container>

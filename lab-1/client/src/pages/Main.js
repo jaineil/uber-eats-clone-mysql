@@ -26,6 +26,7 @@ export default class Main extends Component {
 				<Route path="/restaurantSignin" component={RestaurantSignin} />
 				<Route path="/temp" component={TempDashboard} />
 				<Route path="/chooseDish" component={RestaurantDetails} />
+				<Route path="/order" component={OrderSummary} />
 				<Route
 					path="/restaurantDashboard"
 					component={RestaurantDashboard}
@@ -35,7 +36,6 @@ export default class Main extends Component {
 					component={RestaurantProfile}
 				/>
 				<Route path="/restaurantMenu" component={RestaurantMenu} />
-				<Route path="/order" component={OrderSummary} />
 				<Route path="/dishes/edit/:mealId" component={EditDish} />
 			</div>
 		);
