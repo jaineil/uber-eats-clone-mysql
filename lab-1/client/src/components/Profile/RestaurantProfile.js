@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router";
 import {
 	Container,
 	Carousel,
@@ -18,6 +19,14 @@ import "../Registration/Registration.component.css";
 import { config } from "../../config/awsConfig";
 
 export const RestaurantProfile = (props) => {
+	const history = useHistory();
+	if (!cookie.load("restaurantId")) {
+		console.log("No user cookie!");
+		history.push("/restaurantSignin");
+	} else {
+		console.log("All good on the cookie front!");
+	}
+
 	const [name, setName] = useState("");
 	const [emailId, setEmail] = useState("");
 	const [description, setDescription] = useState("");

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router";
 import {
 	Container,
 	Navbar,
@@ -19,10 +20,12 @@ import { config } from "../../config/awsConfig";
 import { Link } from "react-router-dom";
 
 export const EditDish = (props) => {
+	const history = useHistory();
 	if (!cookie.load("restaurantId")) {
-		console.error("No cookie found for session");
+		console.log("No user cookie!");
+		history.push("/restaurantSignin");
 	} else {
-		console.log("All good on cookie front");
+		console.log("All good on the cookie front!");
 	}
 	const mealId = props.match.params.mealId;
 

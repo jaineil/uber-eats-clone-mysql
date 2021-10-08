@@ -64,7 +64,9 @@ export const RestaurantDetails = (props) => {
 
 	return (
 		<CartProvider>
-			{cartIsShown && <Cart onClose={hideCartHandler} restaurantId={1} />}
+			{cartIsShown && (
+				<Cart onClose={hideCartHandler} restaurantId={restaurantId} />
+			)}
 			<Header
 				onShowCart={showCartHandler}
 				restaurantImg={restaurantMeta.RESTAURANT_IMAGE_URL}

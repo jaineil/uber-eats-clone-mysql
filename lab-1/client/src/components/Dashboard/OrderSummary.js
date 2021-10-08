@@ -113,7 +113,7 @@ export const OrderSummary = (props) => {
 			restaurantId: cart.restaurantId,
 			customerId: 5,
 			time: today.toISOString(),
-			amount: cart.total,
+			amount: parseInt(cart.total),
 			addressId: selectedAddressId,
 			items: cart.cartItems,
 		};

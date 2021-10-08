@@ -39,7 +39,7 @@ const Cart = (props) => {
 	const placeOrderHandler = () => {
 		const finalState = {
 			cartItems: cartCtx.items,
-			total: totalAmount,
+			total: parseInt(cartCtx.totalAmount),
 			restaurantId: restaurantId,
 		};
 		sessionStorage.setItem("state", JSON.stringify(finalState));

@@ -12,6 +12,7 @@ import {
 	FormControl,
 	FormGroup,
 } from "react-bootstrap";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import cookie from "react-cookies";
 import Axios from "axios";
@@ -19,8 +20,12 @@ import { uploadFile } from "react-s3";
 import { config } from "../../config/awsConfig";
 
 export const RestaurantMenu = (props) => {
+	const history = useHistory();
 	if (!cookie.load("restaurantId")) {
-		console.error("No cookie found for session");
+		console.log("No user cookie!");
+		history.push("/restaurantSignin");
+	} else {
+		console.log("All good on the cookie front!");
 	}
 
 	const [menuList, setMenuList] = useState([]);

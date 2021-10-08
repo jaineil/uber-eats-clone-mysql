@@ -8,6 +8,9 @@ export const RestaurantDashboard = (props) => {
 
 	if (!cookie.load("restaurantId")) {
 		console.log("No user cookie!");
+		history.push("/restaurantSignin");
+	} else {
+		console.log("All good on the cookie front!");
 	}
 
 	const handleClick = (path) => {
@@ -128,7 +131,7 @@ export const RestaurantDashboard = (props) => {
 							</Card.Text>
 							<Button
 								variant="primary"
-								onClick={() => handleClick("/restaurantOrders")}
+								onClick={() => handleClick("/orders")}
 								className="btn"
 							>
 								View Orders.
