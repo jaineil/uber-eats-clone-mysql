@@ -52,19 +52,16 @@ export const Welcome = () => {
 							>
 								Order breakfast, lunch and dinner.
 							</Card.Text>
-							<div style={{ paddingLeft: "80px" }}>
-								<Button
-									variant="primary"
-									onClick={() =>
-										handleClick("/customerSignup")
-									}
-									className="wel-btn"
-								>
-									New customer?
-									<br />
-									Go to sign up.
-								</Button>
-							</div>
+
+							<Button
+								variant="primary"
+								onClick={() => handleClick("/customerSignup")}
+								className="wel-btn"
+							>
+								New customer?
+								<br />
+								Go to sign up.
+							</Button>
 						</Card.Body>
 					</Card>
 				</Col>
@@ -96,19 +93,16 @@ export const Welcome = () => {
 							>
 								Deliver breakfast, lunch and dinner.
 							</Card.Text>
-							<div style={{ paddingLeft: "80px" }}>
-								<Button
-									variant="primary"
-									onClick={() =>
-										handleClick("/restaurantSignup")
-									}
-									className="wel-btn"
-								>
-									New restaurant?
-									<br />
-									Go to sign up.
-								</Button>
-							</div>
+
+							<Button
+								variant="primary"
+								onClick={() => handleClick("/restaurantSignup")}
+								className="wel-btn"
+							>
+								New restaurant?
+								<br />
+								Go to sign up.
+							</Button>
 						</Card.Body>
 					</Card>
 				</Col>

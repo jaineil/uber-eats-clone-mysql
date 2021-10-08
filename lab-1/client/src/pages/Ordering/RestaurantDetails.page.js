@@ -5,7 +5,9 @@ import Cart from "../../components/Ordering/Cart/Cart";
 import CartProvider from "../../store/CartProvider";
 import Axios from "axios";
 
-export const RestaurantDetails = () => {
+export const RestaurantDetails = (props) => {
+	const restaurantId = props.match.params.restaurantId;
+
 	const [meals, setMeals] = useState([]);
 	const [restaurantMeta, setRestaurantMeta] = useState([]);
 	const [cartIsShown, setCartIsShown] = useState(false);
@@ -23,12 +25,7 @@ export const RestaurantDetails = () => {
 		const fetchRestaurantMeta = async () => {
 			try {
 				const response = await Axios.get(
-					"http://localhost:3000/fetchRestaurantMeta",
-					{
-						params: {
-							restaurantId: 1,
-						},
-					}
+					`http://localhost:3000/fetchRestaurantMeta/${restaurantId}`
 				);
 				const meta = response.data[0];
 				setRestaurantMeta(meta);
@@ -45,12 +42,7 @@ export const RestaurantDetails = () => {
 		const fetchAllMeals = async () => {
 			try {
 				const response = await Axios.get(
-					"http://localhost:3000/fetchDishes",
-					{
-						params: {
-							restaurantId: 1,
-						},
-					}
+					`http://localhost:3000/fetchDishes/${restaurantId}`
 				);
 				setMeals(response.data);
 				console.log("Restaurant Meta => ", meals);

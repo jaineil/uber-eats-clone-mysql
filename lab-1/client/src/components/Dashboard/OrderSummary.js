@@ -156,7 +156,7 @@ export const OrderSummary = (props) => {
 					<h5>Don't see your address?</h5>
 					<h5>Add a new address:</h5>
 
-					<Form onClick={addNewAddressForCustomer}>
+					<Form onSubmit={addNewAddressForCustomer}>
 						<FormGroup className="mt-3">
 							<FormLabel>Street: </FormLabel>
 							<FormControl
