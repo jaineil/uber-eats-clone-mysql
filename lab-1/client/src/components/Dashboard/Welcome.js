@@ -31,7 +31,6 @@ export const Welcome = () => {
 					style={{
 						backgroundImage: `url("https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/customer-theme.svg")`,
 						backgroundRepeat: "no-repeat",
-						height: "100vh",
 					}}
 				>
 					<Card
@@ -53,13 +52,19 @@ export const Welcome = () => {
 							>
 								Order breakfast, lunch and dinner.
 							</Card.Text>
-							<Button
-								variant="primary"
-								onClick={() => handleClick("/customerSignup")}
-								className="wel-btn"
-							>
-								New customer? Go to sign up.
-							</Button>
+							<div style={{ paddingLeft: "80px" }}>
+								<Button
+									variant="primary"
+									onClick={() =>
+										handleClick("/customerSignup")
+									}
+									className="wel-btn"
+								>
+									New customer?
+									<br />
+									Go to sign up.
+								</Button>
+							</div>
 						</Card.Body>
 					</Card>
 				</Col>
@@ -91,13 +96,19 @@ export const Welcome = () => {
 							>
 								Deliver breakfast, lunch and dinner.
 							</Card.Text>
-							<Button
-								variant="primary"
-								onClick={() => handleClick("/restaurantSignup")}
-								className="wel-btn"
-							>
-								New restaurant? Go to sign up.
-							</Button>
+							<div style={{ paddingLeft: "80px" }}>
+								<Button
+									variant="primary"
+									onClick={() =>
+										handleClick("/restaurantSignup")
+									}
+									className="wel-btn"
+								>
+									New restaurant?
+									<br />
+									Go to sign up.
+								</Button>
+							</div>
 						</Card.Body>
 					</Card>
 				</Col>

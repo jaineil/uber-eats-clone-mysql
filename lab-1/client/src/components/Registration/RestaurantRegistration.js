@@ -10,6 +10,7 @@ import {
 	FormControl,
 	FormGroup,
 	Button,
+	Navbar,
 } from "react-bootstrap";
 import Axios from "axios";
 import { uploadFile } from "react-s3";
@@ -99,6 +100,19 @@ export const RestaurantRegistration = (props) => {
 
 	return (
 		<Container fluid>
+			<Navbar bg="light">
+				<Container>
+					<Navbar.Brand href="#home">
+						<img
+							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
+							width="150"
+							height="50"
+							className="d-inline-block align-top"
+							alt="UberEats logo"
+						/>
+					</Navbar.Brand>
+				</Container>
+			</Navbar>
 			<Row
 				style={{
 					paddingLeft: "50px",
@@ -315,12 +329,26 @@ export const RestaurantRegistration = (props) => {
 						<FormGroup className="mt-3">
 							<Row>
 								<Col>
-									<Button variant="primary" type="submit">
+									<Button
+										variant="primary"
+										type="submit"
+										style={{
+											border: "black",
+											backgroundColor: "black",
+										}}
+									>
 										Submit
 									</Button>
 								</Col>
 								<Col>
-									<Button variant="primary">
+									<Button
+										variant="primary"
+										style={{
+											border: "black",
+											backgroundColor: "black",
+										}}
+										className="mb-3"
+									>
 										<Link
 											to="restaurantSignin"
 											className="submit-button"

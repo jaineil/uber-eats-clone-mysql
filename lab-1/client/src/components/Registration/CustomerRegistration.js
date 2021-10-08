@@ -8,6 +8,7 @@ import {
 	FormLabel,
 	FormControl,
 	FormGroup,
+	Navbar,
 } from "react-bootstrap";
 import { useHistory } from "react-router";
 import Axios from "axios";
@@ -60,6 +61,19 @@ export const CustomerRegistration = (props) => {
 
 	return (
 		<Container fluid>
+			<Navbar bg="light">
+				<Container>
+					<Navbar.Brand href="#home">
+						<img
+							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
+							width="150"
+							height="50"
+							className="d-inline-block align-top"
+							alt="UberEats logo"
+						/>
+					</Navbar.Brand>
+				</Container>
+			</Navbar>
 			<Row
 				style={{
 					paddingLeft: "50px",
@@ -235,7 +249,10 @@ export const CustomerRegistration = (props) => {
 									<Button
 										variant="primary"
 										type="submit"
-										style={{ background: "black" }}
+										style={{
+											background: "black",
+											border: "black",
+										}}
 									>
 										Submit
 									</Button>
@@ -243,7 +260,10 @@ export const CustomerRegistration = (props) => {
 								<Col>
 									<Button
 										variant="primary"
-										style={{ background: "black" }}
+										style={{
+											background: "black",
+											border: "black",
+										}}
 									>
 										<Link
 											to="customerSignin"

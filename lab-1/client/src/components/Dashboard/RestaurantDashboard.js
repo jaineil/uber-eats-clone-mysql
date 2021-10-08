@@ -128,7 +128,7 @@ export const RestaurantDashboard = (props) => {
 							</Card.Text>
 							<Button
 								variant="primary"
-								onClick={() => handleClick("/customerSignup")}
+								onClick={() => handleClick("/restaurantOrders")}
 								className="btn"
 							>
 								View Orders.
