@@ -17,10 +17,13 @@ export const RestaurantDashboard = (props) => {
 	return (
 		<Container
 			fluid
-			style={{ backgroundColor: "#EAAA00", height: "100vh" }}
+			style={{
+				backgroundImage: `url("https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/stock-rest-dashboard.jpeg")`,
+				height: "100vh",
+			}}
 		>
 			<Row>
-				<Navbar bg="light">
+				<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
 					<Container>
 						<Navbar.Brand href="#home">
 							<img
@@ -39,12 +42,16 @@ export const RestaurantDashboard = (props) => {
 							width: "24rem",
 							height: "12rem",
 							backgroundColor: "black",
+							opacity: "0.75",
 						}}
 						className="card"
 					>
 						<Card.Body>
 							<Card.Title
-								style={{ color: "white", textAlign: "center" }}
+								style={{
+									color: "white",
+									textAlign: "center",
+								}}
 							>
 								<h5>Your Profile</h5>
 							</Card.Title>
@@ -72,6 +79,7 @@ export const RestaurantDashboard = (props) => {
 							width: "24rem",
 							height: "12rem",
 							backgroundColor: "black",
+							opacity: "0.75",
 						}}
 						className="card"
 					>
@@ -88,7 +96,7 @@ export const RestaurantDashboard = (props) => {
 							</Card.Text>
 							<Button
 								variant="primary"
-								onClick={() => handleClick("/customerSignup")}
+								onClick={() => handleClick("/restaurantMenu")}
 								className="btn"
 							>
 								View Menu.
@@ -103,6 +111,7 @@ export const RestaurantDashboard = (props) => {
 							width: "24rem",
 							height: "12rem",
 							backgroundColor: "black",
+							opacity: "0.75",
 						}}
 						className="card"
 					>
