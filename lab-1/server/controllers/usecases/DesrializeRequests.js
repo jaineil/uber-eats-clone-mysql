@@ -6,6 +6,7 @@ import { FetchRestaurantsEntity } from "../entities/FetchRestaurantsEntity.js";
 import { FetchRestaurantMetaReqEntity } from "../entities/FetchRestaurantMetaReqEntity.js";
 import { DishEntity } from "../entities/DishEntity.js";
 import { FetchDishesReqEntity } from "../entities/FetchDishesReqEntity.js";
+import { FetchOneDishEntity } from "../entities/FetchOneDishEntity.js";
 import { FetchAllCustomerAddressesReqEntity } from "../entities/FetchAllCustomerAddressesReqEntity.js";
 import { CustomerNewAddressEntity } from "../entities/CustomerNewAddressEntity.js";
 import { OrderEntity } from "../entities/OrderEntity.js";
@@ -76,7 +77,7 @@ export class DeserializeRequests {
 		// validate here
 
 		if (req.params) {
-			return new FetchRestaurantMetaReqEntity(req.query.restaurantId);
+			return new FetchRestaurantMetaReqEntity(req.params.restaurantId);
 		}
 	};
 
@@ -113,7 +114,15 @@ export class DeserializeRequests {
 		// validate here
 
 		if (req.params) {
-			return new FetchDishesReqEntity(req.query.restaurantId);
+			return new FetchDishesReqEntity(req.params.restaurantId);
+		}
+	};
+
+	fetchOneDish = (req) => {
+		// validate here
+
+		if (req.params) {
+			return new FetchOneDishEntity(req.params.dishId);
 		}
 	};
 

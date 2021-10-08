@@ -43,4 +43,16 @@ export class DishTable {
 			result(null, res);
 		});
 	};
+
+	fetchOneDish = (data, result) => {
+		const query = `SELECT * FROM ITEM WHERE ID=${data.dishId};`;
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			result(null, res);
+		});
+	};
 }
