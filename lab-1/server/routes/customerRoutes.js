@@ -4,6 +4,7 @@ import { createCustomer } from "../controllers/usecases/customers/createCustomer
 import { fetchAllCustomerAddresses } from "../controllers/usecases/customers/fetchAllCustomerAddresses.js";
 import { addCustomerAddress } from "../controllers/usecases/customers/addCustomerAddress.js";
 import { placeOrder } from "../controllers/usecases/orders/placeOrder.js";
+import { search } from "../controllers/usecases/customers/searchController.js";
 
 export const customerRoutes = express.Router();
 
@@ -12,3 +13,4 @@ customerRoutes.post("/createCustomer", createCustomer);
 customerRoutes.get("/fetchAddresses", fetchAllCustomerAddresses);
 customerRoutes.post("/addNewCustomerAddress", addCustomerAddress);
 customerRoutes.post("/placeOrder", placeOrder);
+customerRoutes.get("/search", search);
