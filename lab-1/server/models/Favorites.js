@@ -30,4 +30,22 @@ export class Favorites {
 			result(null, data);
 		});
 	};
+
+	fetchFavorites = (data, result) => {
+		console.log("About to fetch favorites for client => ", data.customerId);
+
+		const query = `SELECT r.* FROM RESTAURANT r, FAVOURITE_RESTAURANT f
+                            WHERE f.RESTAURANT_ID = r.ID
+                                AND CUSTOMER_ID = ${data.customerId};`;
+
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.error(err);
+				result(err, null);
+				return;
+			}
+			console.log("Fetched all favorite restaurants!");
+			return result(null, res);
+		});
+	};
 }
