@@ -14,6 +14,7 @@ import { UpdateOrderStatusReqEntity } from "../entities/UpdateOrderStatusReqEnti
 import { RestaurantDetailsUpdateEntity } from "../entities/RestaurantDetailsUpdateEntity.js";
 import { RestaurantAddressUpdateReqEntity } from "../entities/RestaurantAddressUpdateReqEntity.js";
 import { DishUpdateReqEntity } from "../entities/DishUpdateReqEntity.js";
+import { FavoriteRestaurantEntity } from "../entities/FavoriteRestaurantEntity.js";
 
 export class DeserializeRequests {
 	createCustomers = (req) => {
@@ -226,6 +227,15 @@ export class DeserializeRequests {
 			return new UpdateOrderStatusReqEntity(
 				req.body.orderId,
 				req.body.orderStatus
+			);
+		}
+	};
+
+	addToFavorite = (req) => {
+		if (req) {
+			return new FavoriteRestaurantEntity(
+				req.body.customerId,
+				req.body.restaurantId
 			);
 		}
 	};
