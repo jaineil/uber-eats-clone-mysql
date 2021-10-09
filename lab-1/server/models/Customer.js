@@ -46,6 +46,7 @@ export class CustomerTable {
 			console.log(`1 record fetched => ${JSON.stringify(res)}`);
 			result(null, {
 				fetchedPassword: res[0].USER_PASSWORD,
+				customerId: res[0].ID,
 				...data,
 			});
 		});
