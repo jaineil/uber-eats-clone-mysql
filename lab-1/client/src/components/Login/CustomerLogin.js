@@ -11,7 +11,6 @@ import {
 	FormControl,
 	FormGroup,
 } from "react-bootstrap";
-import cookie from "react-cookies";
 import Axios from "axios";
 import "../Registration/Registration.component.css";
 
@@ -42,9 +41,6 @@ export const CustomerLogin = (props) => {
 			console.log(response);
 			console.log("Successfully login");
 
-			if (!cookie.load("cookie")) {
-				console.log("No user cookie!");
-			}
 			history.push("/temp");
 		} catch (err) {
 			console.error("Error when logging in the customer => ", err);
@@ -71,7 +67,6 @@ export const CustomerLogin = (props) => {
 								onChange={(e) => {
 									setEmail(e.target.value);
 								}}
-								placeholder="XXX-XXX-XXXX"
 								required
 							/>
 						</FormGroup>

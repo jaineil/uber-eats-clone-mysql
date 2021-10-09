@@ -13,6 +13,7 @@ import { OrderEntity } from "../entities/OrderEntity.js";
 import { UpdateOrderStatusReqEntity } from "../entities/UpdateOrderStatusReqEntity.js";
 import { RestaurantDetailsUpdateEntity } from "../entities/RestaurantDetailsUpdateEntity.js";
 import { RestaurantAddressUpdateReqEntity } from "../entities/RestaurantAddressUpdateReqEntity.js";
+import { DishUpdateReqEntity } from "../entities/DishUpdateReqEntity.js";
 
 export class DeserializeRequests {
 	createCustomers = (req) => {
@@ -145,6 +146,20 @@ export class DeserializeRequests {
 				req.body.ingredients,
 				req.body.dishImgUrl,
 				req.body.restaurantId
+			);
+		}
+	};
+
+	updateDish = (req) => {
+		if (req.body) {
+			return new DishUpdateReqEntity(
+				req.body.name,
+				req.body.description,
+				req.body.price,
+				req.body.ingredients,
+				req.body.category,
+				req.body.dishImgUrl,
+				req.body.mealId
 			);
 		}
 	};

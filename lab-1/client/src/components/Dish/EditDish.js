@@ -87,13 +87,14 @@ export const EditDish = (props) => {
 			category: category,
 			ingredients: ingredients,
 			dishImgUrl: dishImgUrl,
+			mealId: mealId,
 		};
 
-		console.log(JSON.stringify(payload));
+		console.log("About to shoot => ", JSON.stringify(payload));
 
 		try {
 			const response = await Axios.post(
-				`http://localhost:3000/updateOneDish/${mealId}`,
+				`http://localhost:3000/updateOneDish`,
 				payload
 			);
 
@@ -101,6 +102,7 @@ export const EditDish = (props) => {
 				"Successfully updated a dish => ",
 				JSON.stringify(response.data)
 			);
+			// history.push("/restaurantMenu");
 		} catch (err) {
 			console.error(err);
 		}
@@ -210,11 +212,12 @@ export const EditDish = (props) => {
 								onChange={selectDishCategory}
 								defaultValue={category}
 							>
-								<option value="appetizer">Appetizer</option>
-								<option value="salad">Salad</option>
-								<option value="mainCourse">Main Course</option>
-								<option value="dessert">Dessert</option>
-								<option value="beverages">Beverages</option>
+								<option>Select category</option>
+								<option value="APPETIZER">Appetizer</option>
+								<option value="SALAD">Salad</option>
+								<option value="MAIN COURSE">Main Course</option>
+								<option value="DESSERT">Dessert</option>
+								<option value="BEVERAGES">Beverages</option>
 							</FormControl>
 						</Form.Group>
 
