@@ -6,6 +6,7 @@ import { fetchRestaurants } from "../controllers/usecases/restaurants/fetchResta
 import { restaurantSignin } from "../controllers/usecases/restaurants/restaurantSigninController.js";
 import { fetchOrders } from "../controllers/usecases/restaurants/fetchOrders.js";
 import { updateOrderStatus } from "../controllers/usecases/restaurants/updateOrderStatus.js";
+import { updateRestaurantDetails } from "../controllers/usecases/restaurants/updateRestaurantDetails.js";
 
 export const restaurantRoutes = express.Router();
 restaurantRoutes.post("/createRestaurant", createRestaurant);
@@ -18,3 +19,4 @@ restaurantRoutes.get(
 );
 restaurantRoutes.get("/fetchCustomerOrders/:restaurantId", fetchOrders);
 restaurantRoutes.post("/updateOrderStatus", updateOrderStatus);
+restaurantRoutes.post("/updateRestaurant", updateRestaurantDetails);

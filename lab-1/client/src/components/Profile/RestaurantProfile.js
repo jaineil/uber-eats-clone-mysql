@@ -67,6 +67,9 @@ export const RestaurantProfile = (props) => {
 			setOpensAt(meta.OPENS_AT);
 			setClosesAt(meta.CLOSES_AT);
 			setPickupOption(meta.PICKUP_OPTION);
+			setVeg(meta.VEG);
+			setNonVeg(meta.NON_VEG);
+			setVegan(meta.VEGAN);
 
 			console.log(meta);
 		} catch (err) {
@@ -158,17 +161,18 @@ export const RestaurantProfile = (props) => {
 			opensAt: opensAt,
 			closesAt: closesAt,
 			pickupOption: pickupOptionStatus,
-			vegStatus: vegStatus,
-			nonVegStatus: nonVegStatus,
-			veganStatus: veganStatus,
+			veg: vegStatus,
+			nonVeg: nonVegStatus,
+			vegan: veganStatus,
 			restaurantImageUrl: restaurantImgLocation,
+			restaurantId: parseInt(restaurantId),
 		};
 
 		console.log("Created payload => ", JSON.stringify(payload));
 
 		try {
 			const response = await Axios.post(
-				`http://localhost:3000/updateRestaurant/${restaurantId}`,
+				"http://localhost:3000/updateRestaurant",
 				payload
 			);
 

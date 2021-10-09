@@ -34,7 +34,7 @@ export const createRestaurant = (req, res) => {
 				addrZipcode: restaurantEntity.addrZipcode,
 			};
 
-			res.create(restaurantAddressObj, (err, data) => {
+			restaurantAddressTable.create(restaurantAddressObj, (err, data) => {
 				if (err) {
 					console.error(err);
 					res.status(500).send(

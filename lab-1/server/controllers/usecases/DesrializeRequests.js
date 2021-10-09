@@ -11,6 +11,8 @@ import { FetchAllCustomerAddressesReqEntity } from "../entities/FetchAllCustomer
 import { CustomerNewAddressEntity } from "../entities/CustomerNewAddressEntity.js";
 import { OrderEntity } from "../entities/OrderEntity.js";
 import { UpdateOrderStatusReqEntity } from "../entities/UpdateOrderStatusReqEntity.js";
+import { RestaurantDetailsUpdateEntity } from "../entities/RestaurantDetailsUpdateEntity.js";
+import { RestaurantAddressUpdateReqEntity } from "../entities/RestaurantAddressUpdateReqEntity.js";
 
 export class DeserializeRequests {
 	createCustomers = (req) => {
@@ -70,6 +72,9 @@ export class DeserializeRequests {
 			req.body.opensAt,
 			req.body.closesAt,
 			req.body.pickupOption,
+			req.body.vegStatus,
+			req.body.nonVegStatus,
+			req.body.veganStatus,
 			req.body.restaurantImageUrl
 		);
 	};
@@ -79,6 +84,39 @@ export class DeserializeRequests {
 
 		if (req.params) {
 			return new FetchRestaurantMetaReqEntity(req.params.restaurantId);
+		}
+	};
+
+	updateRestaurantDetails = (req) => {
+		if (req) {
+			return new RestaurantDetailsUpdateEntity(
+				req.body.name,
+				req.body.emailId,
+				req.body.description,
+				req.body.cuisine,
+				req.body.mobileNumber,
+				req.body.opensAt,
+				req.body.closesAt,
+				req.body.pickupOption,
+				req.body.veg,
+				req.body.nonVeg,
+				req.body.vegan,
+				req.body.restaurantImageUrl,
+				req.body.restaurantId
+			);
+		}
+	};
+
+	updateRestaurantAddressDetails = (req) => {
+		if (req) {
+			return new RestaurantAddressUpdateReqEntity(
+				req.body.street,
+				req.body.city,
+				req.body.state,
+				req.body.apt,
+				req.body.zipcode,
+				req.body.restaurantId
+			);
 		}
 	};
 

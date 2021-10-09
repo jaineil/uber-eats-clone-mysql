@@ -25,6 +25,9 @@ export const RestaurantRegistration = (props) => {
 	const [password, setPassword] = useState("");
 	const [description, setDescription] = useState("");
 	const [cuisine, setCuisine] = useState("");
+	const [vegan, setVegan] = useState(false);
+	const [veg, setVeg] = useState(false);
+	const [nonVeg, setNonVeg] = useState(false);
 	const [mobileNumber, setMobileNumber] = useState("");
 	const [street, setStreet] = useState("");
 	const [apt, setApt] = useState("");
@@ -54,12 +57,21 @@ export const RestaurantRegistration = (props) => {
 		e.preventDefault();
 
 		let pickupOptionStatus;
+		let vegStatus;
+		let nonVegStatus;
+		let veganStatus;
 
 		await pushRestaurantImgToAWS(e);
 
 		pickupOption === "on"
 			? (pickupOptionStatus = true)
 			: (pickupOptionStatus = false);
+
+		veg === "on" ? (vegStatus = true) : (vegStatus = false);
+
+		nonVeg === "on" ? (nonVegStatus = true) : (nonVegStatus = false);
+
+		vegan === "on" ? (veganStatus = true) : (veganStatus = false);
 
 		const payload = {
 			name: name,
@@ -77,6 +89,9 @@ export const RestaurantRegistration = (props) => {
 			opensAt: opensAt,
 			closesAt: closesAt,
 			pickupOption: pickupOptionStatus,
+			vegStatus: vegStatus,
+			nonVegStatus: nonVegStatus,
+			veganStatus: veganStatus,
 			restaurantImageUrl: restaurantImgLocation,
 		};
 
@@ -102,7 +117,7 @@ export const RestaurantRegistration = (props) => {
 		<Container fluid>
 			<Navbar bg="light">
 				<Container>
-					<Navbar.Brand href="#home">
+					<Navbar.Brand>
 						<img
 							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
 							width="150"
@@ -120,7 +135,7 @@ export const RestaurantRegistration = (props) => {
 				}}
 			>
 				<Col>
-					<h1 className="text">Register you Restaurant</h1>
+					<h1 className="text">Register your Restaurant</h1>
 				</Col>
 			</Row>
 			<Row
@@ -264,7 +279,6 @@ export const RestaurantRegistration = (props) => {
 									<FormLabel>Zipcode: </FormLabel>
 									<FormControl
 										type="text"
-										placeholder="eg. California"
 										onChange={(e) => {
 											setZipcode(e.target.value);
 										}}
@@ -302,28 +316,55 @@ export const RestaurantRegistration = (props) => {
 							</Row>
 						</FormGroup>
 
-						<FormGroup className="mt-3">
+						<FormGroup className="mt-3 mb-3">
 							<Row>
 								<Col>
 									<Form.Switch
 										type="switch"
 										id="form-switch"
-										label=" Select to allow pick-ups"
+										label="Select to allow pick-ups."
 										onChange={(e) =>
 											setPickupOption(e.target.value)
 										}
 									/>
 								</Col>
 								<Col>
-									<Form.Label>
-										Add restaurant image:
-									</Form.Label>
-									<Form.Control
-										type="file"
-										onChange={pushRestaurantImgToAWS}
+									<Form.Switch
+										type="switch"
+										id="form-switch"
+										label="Select for Veg."
+										onChange={(e) => setVeg(e.target.value)}
+									/>
+								</Col>
+								<Col>
+									<Form.Switch
+										type="switch"
+										id="form-switch"
+										label="Select for Non-veg."
+										onChange={(e) =>
+											setNonVeg(e.target.value)
+										}
+									/>
+								</Col>
+								<Col>
+									<Form.Switch
+										type="switch"
+										id="form-switch"
+										label="Select for Vegan."
+										onChange={(e) =>
+											setVegan(e.target.value)
+										}
 									/>
 								</Col>
 							</Row>
+						</FormGroup>
+
+						<FormGroup>
+							<Form.Label>Add restaurant image:</Form.Label>
+							<Form.Control
+								type="file"
+								onChange={pushRestaurantImgToAWS}
+							/>
 						</FormGroup>
 
 						<FormGroup className="mt-3">

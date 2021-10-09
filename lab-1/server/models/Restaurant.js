@@ -5,7 +5,7 @@ export class RestaurantTable {
 		console.log(`About to insert data obj => ${JSON.stringify(data)}`);
 
 		const query = `INSERT INTO RESTAURANT
-                            (NAME, EMAIL_ID, USER_PASSWORD, DESCRIPTION, CUISINE, CONTACT_NUMBER, OPENS_AT, CLOSES_AT, PICKUP_OPTION, RESTAURANT_IMAGE_URL)
+                            (NAME, EMAIL_ID, USER_PASSWORD, DESCRIPTION, CUISINE, CONTACT_NUMBER, OPENS_AT, CLOSES_AT, PICKUP_OPTION, VEG, NON_VEG, VEGAN, RESTAURANT_IMAGE_URL)
                         VALUES
                             (
                                 "${data.name}", 
@@ -17,6 +17,9 @@ export class RestaurantTable {
  								"${data.opensAt}", 
  								"${data.closesAt}",
                                 ${data.pickupOption},
+								${data.veg},
+								${data.nonVeg},
+								${data.vegan},
 								"${data.restaurantImageUrl}"
                             )`;
 
@@ -35,6 +38,37 @@ export class RestaurantTable {
 				restaurantId: res.insertId,
 				...data,
 			});
+		});
+	};
+
+	update = (data, result) => {
+		const query = `UPDATE RESTAURANT
+						SET	NAME = "${data.name}",
+							EMAIL_ID = "${data.emailId}",
+							DESCRIPTION = "${data.description}",
+						    CUISINE = "${data.cuisine}",
+							CONTACT_NUMBER = "${data.mobileNumber}",
+							OPENS_AT = "${data.opensAt}",
+							CLOSES_AT = "${data.closesAt}",
+							PICKUP_OPTION = ${data.pickupOption},
+							VEG = ${data.veg},
+							NON_VEG = ${data.nonVeg},
+							VEGAN = ${data.vegan},
+							RESTAURANT_IMAGE_URL = "${data.restaurantImageUrl}"
+					
+					WHERE ID=${data.restaurantId};`;
+
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+
+			console.log(
+				`1 record of restaurant updated => ${JSON.stringify(res)}`
+			);
+			result(null, data);
 		});
 	};
 

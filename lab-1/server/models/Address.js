@@ -72,6 +72,32 @@ export class RestaurantAddressTable {
 		});
 	};
 
+	update = (data, result) => {
+		const query = `UPDATE RESTAURANT_ADDRESS
+						SET STREET="${data.street}",
+							CITY="${data.city}",
+							STATE="${data.state}",
+							HOUSE_NUMBER="${data.apt}",
+							PINCODE="${data.zipcode}"
+					WHERE RESTAURANT_ID=${data.restaurantId};`;
+
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+
+			console.log(
+				`1 record of restaurant address updated => ${JSON.stringify(
+					res
+				)}`
+			);
+
+			result(null, data);
+		});
+	};
+
 	fetchRestaurantAddress = (data, result) => {
 		const query = `SELECT * FROM RESTAURANT_ADDRESS WHERE RESTAURANT_ID=${data.restaurantId};`;
 		sql.query(query, (err, res) => {
