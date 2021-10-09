@@ -1,7 +1,33 @@
 import { sql } from "./config/db.js";
 
 export class FetchRestaurantTable {
-	fetchAll = (result) => {
+	fetchAllByCustomerLocation = (data, result) => {
+		console.log("Fetching restaurants by customer location");
+
+		const query = `SELECT DISTINCT r.NAME, r.OPENS_AT, r.CLOSES_AT, ra.CITY 
+							FROM CUSTOMER c, RESTAURANT r, CUSTOMER_ADDRESS ca, RESTAURANT_ADDRESS ra
+								WHERE c.CITY = ra.CITY
+									AND r.ID = ra.RESTAURANT_ID
+									AND c.ID = ${data.customerId}
+						UNION
+
+						SELECT DISTINCT r.NAME, r.OPENS_AT, r.CLOSES_AT, ra.CITY 
+							FROM CUSTOMER c, RESTAURANT r, CUSTOMER_ADDRESS ca, RESTAURANT_ADDRESS ra
+								WHERE c.CITY != ra.CITY
+									AND r.ID = ra.RESTAURANT_ID
+									AND c.ID = ${data.customerId};`;
+
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			result(null, res);
+		});
+	};
+
+	fetch = (data, result) => {
 		console.log("Fetching all restaurants");
 
 		const query = `SELECT * FROM RESTAURANT;`;
@@ -14,74 +40,6 @@ export class FetchRestaurantTable {
 			console.log("Fetched all restaurants!");
 
 			return result(null, { data });
-		});
-	};
-
-	fetch = (data, result) => {
-		console.log("Filtering both - delivery type and dietary type");
-		const query = ``;
-
-		sql.query(query, (err, res) => {
-			if (err) {
-				console.log(err);
-				result(err, null);
-				return;
-			}
-
-			console.log(
-				`1 record of restaurant added => ${JSON.stringify(res)}`
-			);
-
-			result(null, {
-				restaurantId: res.insertId,
-				...data,
-			});
-		});
-	};
-
-	fetchByTypeOfDelivery = (data, result) => {
-		console.log("Filtering by restaurant delivery type");
-
-		const query = ``;
-
-		sql.query(query, (err, res) => {
-			if (err) {
-				console.log(err);
-				result(err, null);
-				return;
-			}
-
-			console.log(
-				`1 record of restaurant added => ${JSON.stringify(res)}`
-			);
-
-			result(null, {
-				restaurantId: res.insertId,
-				...data,
-			});
-		});
-	};
-
-	fetchByDietaryType = (data, result) => {
-		console.log("Filtering by dietary type");
-
-		const query = ``;
-
-		sql.query(query, (err, res) => {
-			if (err) {
-				console.log(err);
-				result(err, null);
-				return;
-			}
-
-			console.log(
-				`1 record of restaurant added => ${JSON.stringify(res)}`
-			);
-
-			result(null, {
-				restaurantId: res.insertId,
-				...data,
-			});
 		});
 	};
 }
