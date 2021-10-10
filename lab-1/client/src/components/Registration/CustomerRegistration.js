@@ -63,7 +63,7 @@ export const CustomerRegistration = (props) => {
 		<Container fluid>
 			<Navbar bg="light">
 				<Container>
-					<Navbar.Brand href="#home">
+					<Navbar.Brand href="/welcome">
 						<img
 							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
 							width="150"

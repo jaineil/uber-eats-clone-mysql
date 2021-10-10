@@ -13,7 +13,6 @@ import {
 	ButtonGroup,
 	Card,
 } from "react-bootstrap";
-import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Link } from "react-router-dom";
 import "./CustomerDashboard.css";
 import Axios from "axios";
@@ -35,7 +34,10 @@ export const CustomerDashboard = (props) => {
 	const [restaurants, setRestaurants] = useState([]);
 	const [displayRestaurants, setDisplayRestaurants] = useState([]);
 	const [searchedRestaurants, setSearchedRestaurants] = useState([]);
+	const [location, setLocation] = useState();
+
 	const [searchInput, setSearchInput] = useState("");
+
 	const [vegState, setVegState] = useState(false);
 	const [nonVegState, setNonVegState] = useState(false);
 	const [veganState, setVeganState] = useState(false);
@@ -52,7 +54,7 @@ export const CustomerDashboard = (props) => {
 	}, []);
 
 	const fetchRestaurants = async () => {
-		console.log("About to fetch dishes for => ");
+		console.log("About to fetch restaurants");
 		try {
 			const response = await Axios.get(
 				`http://localhost:3000/fetchRestaurants/${customerId}`
@@ -68,6 +70,24 @@ export const CustomerDashboard = (props) => {
 
 	useEffect(() => {
 		fetchRestaurants();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	const fetchCustomerLocation = async () => {
+		console.log("About to fetch customer location");
+		try {
+			const response = await Axios.get(
+				`http://localhost:3000/fetchCustomerLocation/${customerId}`
+			);
+			setLocation(response.data[0].CITY);
+		} catch (err) {
+			console.log(err);
+			console.log("Could not fetch customer location");
+		}
+	};
+
+	useEffect(() => {
+		fetchCustomerLocation();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -383,6 +403,15 @@ export const CustomerDashboard = (props) => {
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
+				<Button
+					style={{
+						color: "white",
+						backgroundColor: "black",
+						border: "black",
+					}}
+				>
+					Location | {location}
+				</Button>
 				<Form inline className="mx-3">
 					<ButtonGroup>
 						<Button

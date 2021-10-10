@@ -41,6 +41,18 @@ export class CustomerAddressTable {
 			result(null, res);
 		});
 	};
+
+	fetchCustomerDefaultAddress = (data, result) => {
+		const query = `SELECT CITY FROM CUSTOMER_ADDRESS WHERE CUSTOMER_ID=${data.customerId} and ADDRESS_TYPE="default";`;
+		sql.query(query, (err, res) => {
+			if (err) {
+				console.log(err);
+				result(err, null);
+				return;
+			}
+			result(null, res);
+		});
+	};
 }
 
 export class RestaurantAddressTable {

@@ -9,11 +9,13 @@ import { fetchRestaurants } from "../controllers/usecases/restaurants/fetchResta
 import { addFavortieRestaurant } from "../controllers/usecases/customers/addFavoriteRestaurant.js";
 import { fetchFavorites } from "../controllers/usecases/customers/fetchFavorites.js";
 import { fetchOrderHistory } from "../controllers/usecases/customers/fetchOrderHistory.js";
+import { fetchDefaultLocation } from "../controllers/usecases/customers/fetchDefaultLocation.js";
 
 export const customerRoutes = express.Router();
 
 customerRoutes.post("/customerSignin", customerSignin);
 customerRoutes.post("/createCustomer", createCustomer);
+customerRoutes.get("/fetchCustomerLocation/:customerId", fetchDefaultLocation);
 customerRoutes.get("/fetchAddresses/:customerId", fetchAllCustomerAddresses);
 customerRoutes.post("/addNewCustomerAddress", addCustomerAddress);
 customerRoutes.post("/placeOrder", placeOrder);
