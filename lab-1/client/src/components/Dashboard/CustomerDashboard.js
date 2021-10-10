@@ -22,7 +22,7 @@ export const CustomerDashboard = (props) => {
 	const customerId = cookie.load("customerId");
 	const profileLink = `/profile/${customerId}`;
 	const favoritesLink = `/favorites/${customerId}`;
-	const pastOrdersLink = `/orders/${customerId}`;
+	const pastOrdersLink = `/viewOrders/${customerId}`;
 	const history = useHistory();
 
 	if (!cookie.load("customerId")) {

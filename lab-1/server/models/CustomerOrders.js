@@ -1,7 +1,9 @@
+import { sql } from "./config/db.js";
+
 export class CustomerOrders {
 	fetch = async (data, result) => {
-		const query = `SELECT DISTINCT o.ID, o.RESTAURANT_ID, o.ADDRESS_ID, o.STATUS, o.AMOUNT, 
-                            GROUP_CONCAT(i.NAME) AS DISH_NAMES, r.NAME, ra.STREET, ra.HOUSE_NUMBER, ra.CITY
+		const query = `SELECT DISTINCT o.STATUS, o.AMOUNT, 
+                            GROUP_CONCAT(i.NAME) AS DISH_NAMES, r.NAME, ra.STREET, ra.HOUSE_NUMBER, ra.CITY, r.CONTACT_NUMBER
                         FROM ORDER_SUMMARY as o
                         LEFT JOIN ORDER_ITEM as oi
                             ON o.ID = oi.ORDER_ID
