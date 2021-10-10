@@ -5,7 +5,7 @@ import "./RestaurantSignup.style.css";
 export const RestaurantSignup = () => {
 	return (
 		<div>
-			<div className="page">
+			<div>
 				<RestaurantRegistration />
 			</div>
 		</div>
