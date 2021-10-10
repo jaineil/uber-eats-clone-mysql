@@ -14,7 +14,7 @@ export const customerRoutes = express.Router();
 
 customerRoutes.post("/customerSignin", customerSignin);
 customerRoutes.post("/createCustomer", createCustomer);
-customerRoutes.get("/fetchAddresses", fetchAllCustomerAddresses);
+customerRoutes.get("/fetchAddresses/:customerId", fetchAllCustomerAddresses);
 customerRoutes.post("/addNewCustomerAddress", addCustomerAddress);
 customerRoutes.post("/placeOrder", placeOrder);
 customerRoutes.get("/search", search);

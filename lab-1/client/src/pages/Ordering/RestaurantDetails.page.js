@@ -1,11 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router";
 import Header from "../../components/Ordering/Layout/Header";
 import Meals from "../../components/Ordering/Meals/Meals";
 import Cart from "../../components/Ordering/Cart/Cart";
 import CartProvider from "../../store/CartProvider";
 import Axios from "axios";
+import cookie from "react-cookies";
 
 export const RestaurantDetails = (props) => {
+	const history = useHistory();
+	if (!cookie.load("customerId")) {
+		console.log("No user cookie!");
+		history.push("/customerSignin");
+	} else {
+		console.log("All good on the cookie front!");
+	}
 	const restaurantId = props.match.params.restaurantId;
 
 	const [meals, setMeals] = useState([]);

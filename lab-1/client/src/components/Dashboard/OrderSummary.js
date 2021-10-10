@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import {
 	Container,
@@ -14,9 +15,17 @@ import {
 } from "react-bootstrap";
 import CustNavbar from "../Navbar/CustNavbar";
 import Axios from "axios";
+import cookie from "react-cookies";
 
 export const OrderSummary = (props) => {
-	// const cart = props.location.state[0];
+	const history = useHistory();
+	if (!cookie.load("customerId")) {
+		console.log("No user cookie!");
+		history.push("/customerSignin");
+	} else {
+		console.log("All good on the cookie front!");
+	}
+	const customerId = cookie.load("customerId");
 	const cart = JSON.parse(sessionStorage.state);
 	console.log(JSON.stringify(cart));
 
@@ -42,12 +51,7 @@ export const OrderSummary = (props) => {
 		const fetchAllAddresses = async () => {
 			try {
 				const response = await Axios.get(
-					"http://localhost:3000/fetchAddresses", // FIX: change this to inline req parameter
-					{
-						params: {
-							customerId: 5,
-						},
-					}
+					`http://localhost:3000/fetchAddresses/${customerId}` // FIX: change this to inline req parameter
 				);
 				console.log(response.data);
 				setAddressIds(response.data);

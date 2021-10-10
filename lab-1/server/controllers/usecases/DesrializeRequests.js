@@ -185,7 +185,9 @@ export class DeserializeRequests {
 		// validate here
 
 		if (req.params) {
-			return new FetchAllCustomerAddressesReqEntity(req.query.customerId);
+			return new FetchAllCustomerAddressesReqEntity(
+				req.params.customerId
+			);
 		}
 	};
 
