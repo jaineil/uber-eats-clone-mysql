@@ -52,7 +52,7 @@ export const CustomerLogin = (props) => {
 		<Container fluid>
 			<Row>
 				<Col>
-					<h1 className="text">Login to UberEats</h1>
+					<h1 className="text">Login to eat with UberEats</h1>
 					<h4>{message}</h4>
 				</Col>
 			</Row>
