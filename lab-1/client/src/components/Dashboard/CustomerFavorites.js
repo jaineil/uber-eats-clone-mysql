@@ -3,7 +3,8 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import cookie from "react-cookies";
 import Axios from "axios";
-import { Card, Col, Row, Button, Container, Navbar } from "react-bootstrap";
+import { Card, Col, Row, Button, Container } from "react-bootstrap";
+import CustNavbar from "../Navbar/CustNavbar.js";
 
 export const CustomerFavorites = (props) => {
 	const customerId = props.match.params.customerId;
@@ -98,19 +99,7 @@ export const CustomerFavorites = (props) => {
 
 	return (
 		<Container fluid style={{ backgroundColor: "whitesmoke" }}>
-			<Navbar variant="light" style={{ backgroundColor: "white" }}>
-				<Container>
-					<Navbar.Brand>
-						<img
-							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-							width="150"
-							height="30"
-							className="d-inline-block align-top"
-							alt="UberEats logo"
-						/>
-					</Navbar.Brand>
-				</Container>
-			</Navbar>
+			<CustNavbar />
 			<h3
 				className="mt-3"
 				style={{

@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import cookie from "react-cookies";
 import Axios from "axios";
+import CustNavbar from "../Navbar/CustNavbar";
 import classes from "../Orders/RestaurantOrders.module.css";
 
 export const CustomerOrders = (props) => {
@@ -97,7 +98,10 @@ export const CustomerOrders = (props) => {
 									</div>
 								</Col>
 
-								<Col>Current status: {order.STATUS}</Col>
+								<Col>
+									<Row>Current status: {order.STATUS}</Row>
+									<Row>When: {order.ORDER_TIME}</Row>
+								</Col>
 
 								<Col>
 									<div>
@@ -118,25 +122,25 @@ export const CustomerOrders = (props) => {
 	};
 
 	return (
-		<Container fluid style={{ background: "black", maxHeight: "500vh" }}>
-			<Navbar variant="light" style={{ backgroundColor: "whitesmoke" }}>
-				<Container>
-					<Navbar.Brand href="/dashboard">
-						<img
-							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-							width="150"
-							height="50"
-							className="d-inline-block align-top"
-							alt="UberEats logo"
-						/>
-					</Navbar.Brand>
-				</Container>
-			</Navbar>
+		<Container fluid>
+			<CustNavbar />
 
-			<Form.Label className="mt-5" style={{ color: "white" }}>
-				<h4>Select order type:</h4>
-			</Form.Label>
-			<FormControl as="select" onChange={handleOrdersFilterChange}>
+			<h3
+				className="mt-3"
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+			>
+				Your Past Orders
+			</h3>
+			<br />
+			<FormControl
+				as="select"
+				onChange={handleOrdersFilterChange}
+				style={{ backgroundColor: "whitesmoke" }}
+			>
 				<option>Select type of order to view</option>
 				<option value="ORDER_PLACED">Order Placed</option>
 				<option value="PREPARING">Preparing</option>

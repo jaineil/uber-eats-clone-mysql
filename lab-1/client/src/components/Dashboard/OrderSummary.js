@@ -12,6 +12,7 @@ import {
 	FormLabel,
 	FormControl,
 } from "react-bootstrap";
+import CustNavbar from "../Navbar/CustNavbar";
 import Axios from "axios";
 
 export const OrderSummary = (props) => {
@@ -126,6 +127,7 @@ export const OrderSummary = (props) => {
 
 	return (
 		<Container fluid>
+			<CustNavbar />
 			<Row
 				style={{
 					paddingTop: "25px",
@@ -133,20 +135,6 @@ export const OrderSummary = (props) => {
 					paddingRight: "50px",
 				}}
 			>
-				<Navbar>
-					<Container>
-						<Navbar.Brand href="#home">
-							<img
-								src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-								width="150"
-								height="50"
-								className="d-inline-block align-top"
-								alt="UberEats logo"
-							/>
-						</Navbar.Brand>
-					</Container>
-				</Navbar>
-
 				<Col md={8} style={{ background: "whitesmoke" }}>
 					<h3 className="mt-3">Select Address</h3>
 					<FormControl as="select" onChange={selectAddressHandler}>
