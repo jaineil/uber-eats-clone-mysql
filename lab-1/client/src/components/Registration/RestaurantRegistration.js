@@ -322,7 +322,7 @@ export const RestaurantRegistration = (props) => {
 									<Form.Switch
 										type="switch"
 										id="form-switch"
-										label="Select to allow pick-ups."
+										label="Offer pick-ups."
 										onChange={(e) =>
 											setPickupOption(e.target.value)
 										}
@@ -332,7 +332,14 @@ export const RestaurantRegistration = (props) => {
 									<Form.Switch
 										type="switch"
 										id="form-switch"
-										label="Select for Veg."
+										label="Offer delivery."
+									/>
+								</Col>
+								<Col>
+									<Form.Switch
+										type="switch"
+										id="form-switch"
+										label="Select Veg."
 										onChange={(e) => setVeg(e.target.value)}
 									/>
 								</Col>
@@ -340,7 +347,7 @@ export const RestaurantRegistration = (props) => {
 									<Form.Switch
 										type="switch"
 										id="form-switch"
-										label="Select for Non-veg."
+										label="Select Non-veg."
 										onChange={(e) =>
 											setNonVeg(e.target.value)
 										}
@@ -350,7 +357,7 @@ export const RestaurantRegistration = (props) => {
 									<Form.Switch
 										type="switch"
 										id="form-switch"
-										label="Select for Vegan."
+										label="Select Vegan."
 										onChange={(e) =>
 											setVegan(e.target.value)
 										}
