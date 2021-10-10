@@ -1,4 +1,4 @@
-import { CustomerOrders } from "../../../models/CustomerOrders";
+import { CustomerOrders } from "../../../models/CustomerOrders.js";
 
 export const fetchOrderHistory = (req, res) => {
 	console.log(req.params);

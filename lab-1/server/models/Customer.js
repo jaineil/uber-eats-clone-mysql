@@ -31,7 +31,7 @@ export class CustomerTable {
 
 	validateCredentials = (data, result) => {
 		const query = `SELECT 
-						USER_PASSWORD 
+						* 
 					FROM 
 						CUSTOMER 
 					WHERE 

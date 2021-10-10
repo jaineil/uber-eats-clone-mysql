@@ -70,6 +70,7 @@ export const RestaurantDetails = (props) => {
 			<Header
 				onShowCart={showCartHandler}
 				restaurantImg={restaurantMeta.RESTAURANT_IMAGE_URL}
+				name={restaurantMeta.NAME}
 			/>
 			<main>
 				<Meals meals={meals} summary={restaurantMeta.DESCRIPTION} />

@@ -25,7 +25,7 @@ export const customerSignin = async (req, res) => {
 					res.status(400).send({ validCredentials: false, ...data });
 				} else {
 					res.cookie("customerId", data.customerId, {
-						maxAge: 900000,
+						maxAge: 3600000,
 						httpOnly: false,
 						path: "/",
 					});

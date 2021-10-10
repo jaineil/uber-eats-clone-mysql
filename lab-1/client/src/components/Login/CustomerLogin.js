@@ -41,7 +41,7 @@ export const CustomerLogin = (props) => {
 			console.log(response);
 			console.log("Successfully login");
 
-			history.push("/temp");
+			history.push("/dashboard");
 		} catch (err) {
 			console.error("Error when logging in the customer => ", err);
 			setMessage("Invalid credentials!");

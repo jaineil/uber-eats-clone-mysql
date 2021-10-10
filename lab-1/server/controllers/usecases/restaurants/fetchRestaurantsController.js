@@ -1,4 +1,4 @@
-import { FetchRestaurantTable } from "../../../models/FetchRestaurant";
+import { FetchRestaurantTable } from "../../../models/FetchRestaurant.js";
 
 export const fetchRestaurants = (req, res) => {
 	console.log(req.params);
