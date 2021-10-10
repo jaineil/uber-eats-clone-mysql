@@ -34,10 +34,13 @@ export const CustomerDashboard = (props) => {
 
 	const [restaurants, setRestaurants] = useState([]);
 	const [displayRestaurants, setDisplayRestaurants] = useState([]);
+	const [searchedRestaurants, setSearchedRestaurants] = useState([]);
 	const [searchInput, setSearchInput] = useState("");
 	const [vegState, setVegState] = useState(false);
 	const [nonVegState, setNonVegState] = useState(false);
 	const [veganState, setVeganState] = useState(false);
+	const [pickupState, setPickupState] = useState(false);
+	const [deliveryState, setDeliveryState] = useState(false);
 
 	const componentIsMounted = useRef(true);
 
@@ -56,6 +59,7 @@ export const CustomerDashboard = (props) => {
 			);
 			setRestaurants(response.data);
 			setDisplayRestaurants(response.data);
+			setSearchedRestaurants(response.data);
 			restaurants.map((item) => console.log(JSON.stringify(item)));
 		} catch (err) {
 			console.error(err);
@@ -70,26 +74,30 @@ export const CustomerDashboard = (props) => {
 	const filteringHandler = (filters) => {
 		let temp = [];
 		console.log("incoming filters => ", filters);
-
+		searchedRestaurants.map((r) => console.log(JSON.stringify(r)));
 		if (
 			filters.veg === true ||
 			filters.nonVeg === true ||
-			filters.vegan === true
+			filters.vegan === true ||
+			filters.pickupState === true ||
+			filters.deliveryState === true
 		) {
-			for (let r of restaurants) {
+			for (const r of searchedRestaurants) {
 				if (
 					(r.VEG && filters.veg) ||
 					(r.NON_VEG && filters.nonVeg) ||
-					(r.VEGAN && filters.vegan)
+					(r.VEGAN && filters.vegan) ||
+					(r.PICKUP_OPTION && filters.pickupState) ||
+					(r.DELIVERY_OPTION && filters.deliveryState)
 				) {
-					console.log(r.NAME, r.VEG, r.NON_VEG, r.VEGAN);
+					console.log("Pushing ", r.NAME);
 					temp.push(r);
 				}
 			}
-			setDisplayRestaurants(temp);
 		} else {
-			setDisplayRestaurants(restaurants);
+			temp = restaurants;
 		}
+		setDisplayRestaurants(temp);
 	};
 
 	const vegSelectHandler = async () => {
@@ -98,6 +106,8 @@ export const CustomerDashboard = (props) => {
 			veg: vegState,
 			nonVeg: nonVegState,
 			vegan: veganState,
+			pickupState: pickupState,
+			deliveryState: deliveryState,
 		};
 		if (temp.style.backgroundColor === "white") {
 			temp.style.backgroundColor = "black";
@@ -126,6 +136,8 @@ export const CustomerDashboard = (props) => {
 			veg: vegState,
 			nonVeg: nonVegState,
 			vegan: veganState,
+			pickupState: pickupState,
+			deliveryState: deliveryState,
 		};
 		if (temp.style.backgroundColor === "white") {
 			temp.style.backgroundColor = "black";
@@ -154,6 +166,8 @@ export const CustomerDashboard = (props) => {
 			veg: vegState,
 			nonVeg: nonVegState,
 			vegan: veganState,
+			pickupState: pickupState,
+			deliveryState: deliveryState,
 		};
 		if (temp.style.backgroundColor === "white") {
 			temp.style.backgroundColor = "black";
@@ -177,35 +191,65 @@ export const CustomerDashboard = (props) => {
 	};
 
 	const pickupSelectHandler = (e) => {
-		const temp = document.getElementById("pickup");
-		if (temp.style.backgroundColor === "whitesmoke") {
-			temp.style.backgroundColor = "black";
-			temp.style.color = "white";
-			temp.style.border = "black";
+		const pickupBtn = document.getElementById("pickup");
+		let payload = {
+			veg: vegState,
+			nonVeg: nonVegState,
+			vegan: veganState,
+			pickupState: pickupState,
+			deliveryState: deliveryState,
+		};
 
+		if (pickupBtn.style.backgroundColor === "white") {
+			pickupBtn.style.backgroundColor = "black";
+			pickupBtn.style.color = "white";
+			pickupBtn.style.border = "black";
+			document.getElementById("delivery").disabled = true;
+			payload = { ...payload, pickupState: !pickupState };
+			setPickupState(true);
+			console.log(payload);
+			filteringHandler(payload);
 			console.log("Add pickup filter");
 		} else {
-			temp.style.backgroundColor = "whitesmoke";
-			temp.style.color = "black";
-			temp.style.border = "black";
-
+			pickupBtn.style.backgroundColor = "white";
+			pickupBtn.style.color = "black";
+			pickupBtn.style.border = "black";
+			document.getElementById("delivery").disabled = false;
+			setPickupState(false);
+			console.log(payload);
+			filteringHandler(payload);
 			console.log("Remove pickup filter");
 		}
 	};
 
 	const deliverySelectHandler = (e) => {
-		const temp = document.getElementById("delivery");
-		if (temp.style.backgroundColor === "whitesmoke") {
-			temp.style.backgroundColor = "black";
-			temp.style.color = "white";
-			temp.style.border = "black";
+		const deliveryBtn = document.getElementById("delivery");
+		let payload = {
+			veg: vegState,
+			nonVeg: nonVegState,
+			vegan: veganState,
+			pickupState: pickupState,
+			deliveryState: deliveryState,
+		};
 
+		if (deliveryBtn.style.backgroundColor === "white") {
+			deliveryBtn.style.backgroundColor = "black";
+			deliveryBtn.style.color = "white";
+			deliveryBtn.style.border = "black";
+			document.getElementById("pickup").disabled = true;
+			payload = { ...payload, deliveryState: !deliveryState };
+			setDeliveryState(true);
+			console.log(payload);
+			filteringHandler(payload);
 			console.log("Add delivery filter");
 		} else {
-			temp.style.backgroundColor = "whitesmoke";
-			temp.style.color = "black";
-			temp.style.border = "black";
-
+			deliveryBtn.style.backgroundColor = "white";
+			deliveryBtn.style.color = "black";
+			deliveryBtn.style.border = "black";
+			document.getElementById("pickup").disabled = false;
+			setDeliveryState(false);
+			console.log(payload);
+			filteringHandler(payload);
 			console.log("Remove delivery filter");
 		}
 	};
@@ -218,6 +262,7 @@ export const CustomerDashboard = (props) => {
 				},
 			});
 			console.log(res.data);
+			setSearchedRestaurants(res.data);
 			setDisplayRestaurants(res.data);
 		} catch (err) {
 			console.error(err);
@@ -227,6 +272,10 @@ export const CustomerDashboard = (props) => {
 	const resetHandler = () => {
 		fetchRestaurants();
 		window.location.reload(false);
+	};
+
+	const logoutHandler = () => {
+		cookie.remove("customerId");
 	};
 
 	const addToFavorite = (restaurantId) => async (e) => {
@@ -316,32 +365,42 @@ export const CustomerDashboard = (props) => {
 			fluid
 			style={{ backgroundColor: "whitesmoke", height: "500vh" }}
 		>
-			<Navbar variant="light" style={{ backgroundColor: "white" }}>
-				<Container>
-					<Navbar.Brand>
-						<img
-							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-							width="150"
-							height="30"
-							className="d-inline-block align-top"
-							alt="UberEats logo"
-						/>
-					</Navbar.Brand>
-				</Container>
+			<Navbar
+				collapseOnSelect
+				expand="sm"
+				bg="light"
+				variant="light"
+				className="mb-3"
+			>
+				<Navbar.Brand as={Link} to="/dashboard">
+					<img
+						src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
+						width="150"
+						height="30"
+						className="d-inline-block align-top"
+						alt="UberEats logo"
+					/>
+				</Navbar.Brand>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
+				<Form inline className="mx-3">
+					<ButtonGroup>
+						<Button
+							variant="secondary"
+							as={Link}
+							to="/customerSignin"
+							style={{
+								color: "white",
+								backgroundColor: "black",
+								border: "black",
+							}}
+							onClick={logoutHandler}
+						>
+							Logout
+						</Button>
+					</ButtonGroup>
+				</Form>
 			</Navbar>
-
-			<BootstrapSwitchButton
-				checked={true}
-				width={100}
-				onlabel="Delivery"
-				offlabel="Pickup"
-				onstyle="outline-dark"
-				offstyle="outline-dark"
-				// onChange={(checked) => {
-				// 	setPickup(checked);
-				// 	console.log(pickup);
-				// }}
-			/>
 
 			<Form style={{ paddingLeft: "450px" }}>
 				<Row>
