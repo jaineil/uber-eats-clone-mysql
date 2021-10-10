@@ -217,7 +217,7 @@ export const CustomerDashboard = (props) => {
 			document.getElementById("delivery").disabled = false;
 			setPickupState(false);
 			console.log(payload);
-			filteringHandler(payload);
+			filteringHandler({ ...payload, pickupState: !pickupState });
 			console.log("Remove pickup filter");
 		}
 	};
@@ -249,7 +249,7 @@ export const CustomerDashboard = (props) => {
 			document.getElementById("pickup").disabled = false;
 			setDeliveryState(false);
 			console.log(payload);
-			filteringHandler(payload);
+			filteringHandler({ ...payload, deliveryState: !deliveryState });
 			console.log("Remove delivery filter");
 		}
 	};
