@@ -34,8 +34,9 @@ export class Favorites {
 	fetchFavorites = (data, result) => {
 		console.log("About to fetch favorites for client => ", data.customerId);
 
-		const query = `SELECT r.* FROM RESTAURANT r, FAVOURITE_RESTAURANT f
+		const query = `SELECT r.ID, r.NAME, r.OPENS_AT, r.CLOSES_AT, r.RESTAURANT_IMAGE_URL, ra.CITY FROM RESTAURANT r, FAVOURITE_RESTAURANT f, RESTAURANT_ADDRESS ra
                             WHERE f.RESTAURANT_ID = r.ID
+								AND ra.RESTAURANT_ID = r.ID
                                 AND CUSTOMER_ID = ${data.customerId};`;
 
 		sql.query(query, (err, res) => {

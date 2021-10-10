@@ -253,17 +253,13 @@ export const OrderSummary = (props) => {
 						<hr />
 						<div className="d-flex justify-content-end">
 							<Button
-								// onClick={finalizedOrder}
 								variant="primary"
 								style={{
 									background: "black",
 									border: "black",
 								}}
 							>
-								<Link
-									to="customerSignin"
-									className="submit-button"
-								>
+								<Link to="dashboard" className="submit-button">
 									Go to dashboard
 								</Link>
 							</Button>
