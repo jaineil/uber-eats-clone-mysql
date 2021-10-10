@@ -2,6 +2,7 @@ import { Container, Navbar, Row, Col, Card, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 import cookie from "react-cookies";
 import "./RestaurantDashboard.css";
+import RestNavbar from "../Navbar/RestNavbar";
 
 export const RestaurantDashboard = (props) => {
 	const history = useHistory();
@@ -25,20 +26,8 @@ export const RestaurantDashboard = (props) => {
 				height: "100vh",
 			}}
 		>
+			<RestNavbar />
 			<Row>
-				<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
-					<Container>
-						<Navbar.Brand href="#home">
-							<img
-								src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-								width="150"
-								height="50"
-								className="d-inline-block align-top"
-								alt="UberEats logo"
-							/>
-						</Navbar.Brand>
-					</Container>
-				</Navbar>
 				<Col>
 					<Card
 						style={{

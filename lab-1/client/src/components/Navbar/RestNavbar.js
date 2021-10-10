@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import { Form, Button, Navbar } from "react-bootstrap";
 import cookie from "react-cookies";
 
-const CustNavbar = (props) => {
+const RestNavbar = (props) => {
 	const history = useHistory();
 
-	if (!cookie.load("customerId")) {
+	if (!cookie.load("restaurantId")) {
 		console.log("No user cookie!");
-		history.push("/customerSignin");
+		history.push("/welcome");
 	} else {
 		console.log("All good on the cookie front!");
 	}
 	const logoutHandler = () => {
-		cookie.remove("customerId");
+		cookie.remove("restaurantId");
 	};
 
 	return (
@@ -24,7 +24,7 @@ const CustNavbar = (props) => {
 			variant="light"
 			className="mb-3"
 		>
-			<Navbar.Brand as={Link} to="/dashboard">
+			<Navbar.Brand as={Link} to="/restaurantDashboard">
 				<img
 					src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
 					width="150"
@@ -54,4 +54,4 @@ const CustNavbar = (props) => {
 	);
 };
 
-export default CustNavbar;
+export default RestNavbar;

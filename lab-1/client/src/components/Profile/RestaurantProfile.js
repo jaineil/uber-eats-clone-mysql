@@ -17,6 +17,7 @@ import Axios from "axios";
 import { uploadFile } from "react-s3";
 import "../Registration/Registration.component.css";
 import { config } from "../../config/awsConfig";
+import RestNavbar from "../Navbar/RestNavbar";
 
 export const RestaurantProfile = (props) => {
 	const history = useHistory();
@@ -189,19 +190,7 @@ export const RestaurantProfile = (props) => {
 
 	return (
 		<Container fluid style={{ background: "whitesmoke", height: "300vh" }}>
-			<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
-				<Container>
-					<Navbar.Brand>
-						<img
-							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-							width="150"
-							height="50"
-							className="d-inline-block align-top"
-							alt="UberEats logo"
-						/>
-					</Navbar.Brand>
-				</Container>
-			</Navbar>
+			<RestNavbar />
 			<Carousel>
 				<Carousel.Item>
 					<img

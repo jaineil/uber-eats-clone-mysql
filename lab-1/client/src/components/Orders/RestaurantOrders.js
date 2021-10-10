@@ -11,6 +11,7 @@ import {
 import cookie from "react-cookies";
 import Axios from "axios";
 import classes from "../Orders/RestaurantOrders.module.css";
+import RestNavbar from "../Navbar/RestNavbar";
 
 export const RestaurantOrders = () => {
 	const [orders, setOrders] = useState([]);
@@ -187,30 +188,29 @@ export const RestaurantOrders = () => {
 	};
 
 	return (
-		<Container fluid style={{ background: "black", maxHeight: "500vh" }}>
-			<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
-				<Container>
-					<Navbar.Brand>
-						<img
-							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
-							width="150"
-							height="50"
-							className="d-inline-block align-top"
-							alt="UberEats logo"
-						/>
-					</Navbar.Brand>
-				</Container>
-			</Navbar>
+		<Container fluid>
+			<RestNavbar />
+			<h3
+				className="mt-3"
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+			>
+				Your Restaurant's Orders
+			</h3>
 
-			<Form.Label className="mt-5" style={{ color: "white" }}>
-				<h4>Select order type:</h4>
-			</Form.Label>
-			<FormControl as="select" onChange={handleOrdersFilterChange}>
+			<FormControl
+				as="select"
+				onChange={handleOrdersFilterChange}
+				style={{ backgroundColor: "whitesmoke" }}
+			>
 				<option>Select order status to view orders</option>
-				<option value="ORDER_PLACED">ORDER_PLACED</option>
-				<option value="PREPARING">PREPARING</option>
-				<option value="ON_THE_WAY">ON_THE_WAY</option>
-				<option value="DELIVERED">DELIVERED</option>
+				<option value="ORDER_PLACED">Order Placed</option>
+				<option value="PREPARING">Preparing</option>
+				<option value="ON_THE_WAY">On the way</option>
+				<option value="DELIVERED">Delivery</option>
 			</FormControl>
 
 			<section className={classes.orders}>

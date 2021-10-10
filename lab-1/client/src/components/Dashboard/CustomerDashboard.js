@@ -388,7 +388,7 @@ export const CustomerDashboard = (props) => {
 						<Button
 							variant="secondary"
 							as={Link}
-							to="/customerSignin"
+							to="/welcome"
 							style={{
 								color: "white",
 								backgroundColor: "black",
