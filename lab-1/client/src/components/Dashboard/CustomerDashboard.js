@@ -13,6 +13,7 @@ import {
 	ButtonGroup,
 	Card,
 } from "react-bootstrap";
+import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Link } from "react-router-dom";
 import "./CustomerDashboard.css";
 import Axios from "axios";
@@ -21,6 +22,7 @@ export const CustomerDashboard = (props) => {
 	const customerId = cookie.load("customerId");
 	const profileLink = `/profile/${customerId}`;
 	const favoritesLink = `/favorites/${customerId}`;
+	const pastOrdersLink = `/orders/${customerId}`;
 	const history = useHistory();
 
 	if (!cookie.load("customerId")) {
@@ -133,7 +135,6 @@ export const CustomerDashboard = (props) => {
 			payload = { ...payload, nonVeg: !nonVegState };
 			console.log(payload);
 			filteringHandler(payload);
-			// call your filtering logic with "nonVeg" parameter
 			console.log("Add nonVeg filter");
 		} else {
 			temp.style.backgroundColor = "white";
@@ -181,13 +182,13 @@ export const CustomerDashboard = (props) => {
 			temp.style.backgroundColor = "black";
 			temp.style.color = "white";
 			temp.style.border = "black";
-			// call your filtering logic with "vegan" parameter
+
 			console.log("Add pickup filter");
 		} else {
 			temp.style.backgroundColor = "whitesmoke";
 			temp.style.color = "black";
 			temp.style.border = "black";
-			// call your filtering logic without "vegan"
+
 			console.log("Remove pickup filter");
 		}
 	};
@@ -198,13 +199,13 @@ export const CustomerDashboard = (props) => {
 			temp.style.backgroundColor = "black";
 			temp.style.color = "white";
 			temp.style.border = "black";
-			// call your filtering logic with "vegan" parameter
+
 			console.log("Add delivery filter");
 		} else {
 			temp.style.backgroundColor = "whitesmoke";
 			temp.style.color = "black";
 			temp.style.border = "black";
-			// call your filtering logic without "vegan"
+
 			console.log("Remove delivery filter");
 		}
 	};
@@ -228,7 +229,22 @@ export const CustomerDashboard = (props) => {
 		window.location.reload(false);
 	};
 
-	// define addToFavorite API call here
+	const addToFavorite = (restaurantId) => async (e) => {
+		const payload = {
+			restaurantId: restaurantId,
+			customerId: customerId,
+		};
+		console.log(JSON.stringify(payload));
+		try {
+			const res = await Axios.post(
+				"http://localhost:3000/addFavorite",
+				payload
+			);
+			console.log("Successfully added to favorites ", res.data);
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	const displayRestaurantsList = displayRestaurants.map((resto) => (
 		<Col className="ml-3 mt-3" style={{ width: "55rem", height: "500px" }}>
@@ -284,7 +300,7 @@ export const CustomerDashboard = (props) => {
 									backgroundColor: "black",
 									border: "black",
 								}}
-								// onClick={addToFavorite}
+								onClick={addToFavorite(resto.ID)}
 							>
 								Add to favorite
 							</Button>
@@ -296,8 +312,11 @@ export const CustomerDashboard = (props) => {
 	));
 
 	return (
-		<Container fluid style={{ backgroundColor: "whitesmoke" }}>
-			<Navbar variant="light" style={{ backgroundColor: "#EAAA00" }}>
+		<Container
+			fluid
+			style={{ backgroundColor: "whitesmoke", height: "500vh" }}
+		>
+			<Navbar variant="light" style={{ backgroundColor: "white" }}>
 				<Container>
 					<Navbar.Brand>
 						<img
@@ -310,6 +329,19 @@ export const CustomerDashboard = (props) => {
 					</Navbar.Brand>
 				</Container>
 			</Navbar>
+
+			<BootstrapSwitchButton
+				checked={true}
+				width={100}
+				onlabel="Delivery"
+				offlabel="Pickup"
+				onstyle="outline-dark"
+				offstyle="outline-dark"
+				// onChange={(checked) => {
+				// 	setPickup(checked);
+				// 	console.log(pickup);
+				// }}
+			/>
 
 			<Form style={{ paddingLeft: "450px" }}>
 				<Row>
@@ -359,6 +391,9 @@ export const CustomerDashboard = (props) => {
 				</Nav.Link>
 				<Nav.Link href={favoritesLink} style={{ color: "black" }}>
 					Favorites
+				</Nav.Link>
+				<Nav.Link href={pastOrdersLink} style={{ color: "black" }}>
+					Your orders
 				</Nav.Link>
 			</Nav>
 

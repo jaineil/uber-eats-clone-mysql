@@ -4,7 +4,7 @@ import { Favorites } from "../../../models/Favorites.js";
 export const addFavortieRestaurant = (req, res) => {
 	console.log(req.body);
 	const deserializeRequests = new DeserializeRequests();
-	const favoriteEntity = deserializeRequests.addCustomerAddress(req);
+	const favoriteEntity = deserializeRequests.addToFavorite(req);
 
 	console.log(
 		"Entity to be inserted into the favorites table => ",

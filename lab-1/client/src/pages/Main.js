@@ -5,7 +5,6 @@ import { CustomerSignin } from "./Login/CustomerSignin.page";
 import { RestaurantSignup } from "./RestaurantSignup/RestaurantSignup.page";
 import { RestaurantSignin } from "./Login/RestaurantLogin.page";
 import { RestaurantDetails } from "./Ordering/RestaurantDetails.page";
-import { TempDashboard } from "../components/Dashboard/TempDashboard";
 import { OrderSummary } from "../components/Dashboard/OrderSummary";
 import { Welcome } from "../components/Dashboard/Welcome";
 import { RestaurantDashboard } from "../components/Dashboard/RestaurantDashboard";
@@ -23,15 +22,16 @@ export default class Main extends Component {
 				{/*Render Different Component based on Route*/}
 				<Route path="/welcome" component={Welcome} />
 				<Route path="/customerSignup" component={CustomerSignup} />
-				<Route path="/restaurantSignup" component={RestaurantSignup} />
 				<Route path="/customerSignin" component={CustomerSignin} />
-				<Route path="/restaurantSignin" component={RestaurantSignin} />
-				<Route path="/temp" component={TempDashboard} />
 				<Route
 					path="/chooseDish/:restaurantId"
 					component={RestaurantDetails}
 				/>
+				<Route path="/dashboard" component={CustomerDashboard} />
 				<Route path="/order" component={OrderSummary} />
+
+				<Route path="/restaurantSignup" component={RestaurantSignup} />
+				<Route path="/restaurantSignin" component={RestaurantSignin} />
 				<Route
 					path="/restaurantDashboard"
 					component={RestaurantDashboard}
@@ -43,7 +43,6 @@ export default class Main extends Component {
 				<Route path="/restaurantMenu" component={RestaurantMenu} />
 				<Route path="/orders" component={RestaurantOrders} />
 				<Route path="/dishes/edit/:mealId" component={EditDish} />
-				<Route path="/dashboard" component={CustomerDashboard} />
 			</div>
 		);
 	}
