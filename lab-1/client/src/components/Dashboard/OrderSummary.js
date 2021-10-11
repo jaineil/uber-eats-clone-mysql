@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import {
 	Container,
-	Navbar,
 	Col,
 	Row,
 	Button,
@@ -93,7 +92,7 @@ export const OrderSummary = (props) => {
 
 	const addNewAddressForCustomer = async () => {
 		const payload = {
-			customerId: 5, // FIX: make this a variable passed down from login flow
+			customerId: customerId,
 			street: street,
 			apt: apt,
 			city: city,
@@ -116,7 +115,7 @@ export const OrderSummary = (props) => {
 		const today = new Date();
 		const payload = {
 			restaurantId: cart.restaurantId,
-			customerId: 5,
+			customerId: customerId,
 			time: today.toISOString(),
 			amount: parseInt(cart.total),
 			addressId: selectedAddressId,
@@ -231,7 +230,7 @@ export const OrderSummary = (props) => {
 						<Col xs={6} md={4}></Col>
 						<Col xs={6} md={4}></Col>
 						<Col xs={6} md={4}>
-							<h5>{cart.total}</h5>
+							<h5>${cart.total}</h5>
 						</Col>
 					</Row>
 					<br />

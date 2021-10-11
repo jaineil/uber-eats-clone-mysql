@@ -1,13 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import {
-	Row,
-	Col,
-	Container,
-	Navbar,
-	Form,
-	FormControl,
-} from "react-bootstrap";
+import { Row, Col, Container, FormControl } from "react-bootstrap";
 import cookie from "react-cookies";
 import Axios from "axios";
 import CustNavbar from "../Navbar/CustNavbar";
@@ -61,11 +54,13 @@ export const CustomerOrders = (props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const createOrdersSummary = (dishNames, dishQuantities) => {
-		const orderItemsList = dishNames.map((orderItem) => (
+	const createOrdersSummary = (dishNames) => {
+		const arrDishNames = dishNames.split(",");
+		console.log(arrDishNames);
+		const orderItemsList = arrDishNames.map((orderItem) => (
 			<Row>
 				<Col style={{ width: "150px", marginLeft: "100px" }}>
-					{orderItem.name}
+					{orderItem}
 					<hr />
 				</Col>
 			</Row>

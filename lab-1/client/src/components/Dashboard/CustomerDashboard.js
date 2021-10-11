@@ -345,7 +345,7 @@ export const CustomerDashboard = (props) => {
 						</Card.Text>
 					</Row>
 				</Card.Body>
-				<Card.Footer style={{ height: "20vh" }}>
+				<Card.Footer style={{ height: "15vh" }}>
 					<Row>
 						<Col>
 							<Link to={`/chooseDish/${resto.ID}`}>
