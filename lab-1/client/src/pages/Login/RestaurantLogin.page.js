@@ -4,10 +4,8 @@ import "./Signin.style.css";
 
 export const RestaurantSignin = () => {
 	return (
-		<div className="login-page">
-			<div className="form-box">
-				<RestaurantLogin />
-			</div>
+		<div>
+			<RestaurantLogin />
 		</div>
 	);
 };

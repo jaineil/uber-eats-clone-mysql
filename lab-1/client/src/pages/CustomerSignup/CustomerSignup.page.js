@@ -4,9 +4,7 @@ import { CustomerRegistration } from "../../components/Registration/CustomerRegi
 export const CustomerSignup = () => {
 	return (
 		<div>
-			<div>
-				<CustomerRegistration />
-			</div>
+			<CustomerRegistration />
 		</div>
 	);
 };

@@ -10,6 +10,7 @@ import {
 	FormLabel,
 	FormControl,
 	FormGroup,
+	Navbar,
 } from "react-bootstrap";
 import Axios from "axios";
 import "../Registration/Registration.component.css";
@@ -50,12 +51,27 @@ export const CustomerLogin = (props) => {
 
 	return (
 		<Container fluid>
+			<Navbar bg="light">
+				<Container>
+					<Navbar.Brand href="/welcome">
+						<img
+							src="https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/logo.svg"
+							width="150"
+							height="50"
+							className="d-inline-block align-top"
+							alt="UberEats logo"
+						/>
+					</Navbar.Brand>
+				</Container>
+			</Navbar>
+
 			<Row>
 				<Col>
 					<h1 className="text">Login to eat with UberEats</h1>
 					<h4>{message}</h4>
 				</Col>
 			</Row>
+
 			<Row>
 				<Col>
 					<Form onSubmit={(e) => loginToAccount(e)}>
@@ -86,12 +102,27 @@ export const CustomerLogin = (props) => {
 						<FormGroup className="mb-3">
 							<Row>
 								<Col>
-									<Button variant="primary" type="submit">
+									<Button
+										variant="primary"
+										type="submit"
+										style={{
+											color: "white",
+											backgroundColor: "black",
+											border: "black",
+										}}
+									>
 										Submit
 									</Button>
 								</Col>
 								<Col>
-									<Button variant="primary">
+									<Button
+										variant="primary"
+										style={{
+											color: "white",
+											backgroundColor: "black",
+											border: "black",
+										}}
+									>
 										<Link
 											to="customerSignup"
 											className="submit-button"

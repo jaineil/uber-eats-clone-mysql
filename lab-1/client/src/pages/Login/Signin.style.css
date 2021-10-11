@@ -1,11 +1,3 @@
-.body {
-	background: url("https://uber-eats-webapp-clone.s3.us-west-1.amazonaws.com/cust-login.jpg")
-		no-repeat center center fixed;
-	background-size: cover;
-	height: 100%;
-	overflow: hidden;
-}
-
 .login-page {
 	display: flex;
 	justify-content: center;
