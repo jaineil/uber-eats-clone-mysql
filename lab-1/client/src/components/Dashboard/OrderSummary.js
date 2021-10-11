@@ -15,6 +15,7 @@ import {
 import CustNavbar from "../Navbar/CustNavbar";
 import Axios from "axios";
 import cookie from "react-cookies";
+import { awsServer } from "../../config/awsIP";
 
 export const OrderSummary = (props) => {
 	const history = useHistory();
@@ -50,7 +51,7 @@ export const OrderSummary = (props) => {
 		const fetchAllAddresses = async () => {
 			try {
 				const response = await Axios.get(
-					`http://localhost:3000/fetchAddresses/${customerId}` // FIX: change this to inline req parameter
+					`http://${awsServer}/fetchAddresses/${customerId}`
 				);
 				console.log(response.data);
 				setAddressIds(response.data);
@@ -102,7 +103,7 @@ export const OrderSummary = (props) => {
 		};
 		try {
 			await Axios.post(
-				"http://localhost:3000/addNewCustomerAddress",
+				`http://${awsServer}/addNewCustomerAddress`,
 				payload
 			);
 		} catch (err) {
@@ -121,10 +122,7 @@ export const OrderSummary = (props) => {
 			addressId: selectedAddressId,
 			items: cart.cartItems,
 		};
-		const res = await Axios.post(
-			"http://localhost:3000/placeOrder",
-			payload
-		);
+		const res = await Axios.post(`http://${awsServer}/placeOrder`, payload);
 		console.log("Response from API => ", res);
 	};
 

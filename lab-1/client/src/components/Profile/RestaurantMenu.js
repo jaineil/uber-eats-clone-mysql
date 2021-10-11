@@ -19,6 +19,7 @@ import Axios from "axios";
 import { uploadFile } from "react-s3";
 import { config } from "../../config/awsConfig";
 import RestNavbar from "../Navbar/RestNavbar";
+import { awsServer } from "../../config/awsIP";
 
 export const RestaurantMenu = (props) => {
 	const history = useHistory();
@@ -60,7 +61,7 @@ export const RestaurantMenu = (props) => {
 		};
 		try {
 			const response = await Axios.post(
-				`http://localhost:3000/createDish`,
+				`http://${awsServer}/createDish`,
 				payload
 			);
 
@@ -97,7 +98,7 @@ export const RestaurantMenu = (props) => {
 		console.log("About to fetch dishes for => ", restaurantId);
 		try {
 			const response = await Axios.get(
-				`http://localhost:3000/fetchDishes/${restaurantId}`
+				`http://${awsServer}/fetchDishes/${restaurantId}`
 			);
 			setMenuList(response.data);
 			console.log(

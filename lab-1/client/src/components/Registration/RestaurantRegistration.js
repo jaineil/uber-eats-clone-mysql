@@ -16,6 +16,7 @@ import Axios from "axios";
 import { uploadFile } from "react-s3";
 import "./Registration.component.css";
 import { config } from "../../config/awsConfig";
+import { awsServer } from "../../config/awsIP";
 
 export const RestaurantRegistration = (props) => {
 	const history = useHistory();
@@ -99,7 +100,7 @@ export const RestaurantRegistration = (props) => {
 
 		try {
 			const response = await Axios.post(
-				"http://localhost:3000/createRestaurant",
+				`http://${awsServer}/createRestaurant`,
 				payload
 			);
 			console.log(

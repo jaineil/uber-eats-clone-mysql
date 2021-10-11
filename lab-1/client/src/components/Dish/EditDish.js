@@ -18,6 +18,7 @@ import Axios from "axios";
 import { uploadFile } from "react-s3";
 import { config } from "../../config/awsConfig";
 import { Link } from "react-router-dom";
+import { awsServer } from "../../config/awsIP";
 
 export const EditDish = (props) => {
 	const history = useHistory();
@@ -42,7 +43,7 @@ export const EditDish = (props) => {
 		console.log("About to fetch dish => ", mealId);
 		try {
 			const response = await Axios.get(
-				`http://localhost:3000/fetchOneDish/${mealId}`
+				`http://${awsServer}/fetchOneDish/${mealId}`
 			);
 
 			const mealMeta = response.data[0];
@@ -94,7 +95,7 @@ export const EditDish = (props) => {
 
 		try {
 			const response = await Axios.post(
-				`http://localhost:3000/updateOneDish`,
+				`http://${awsServer}/updateOneDish`,
 				payload
 			);
 

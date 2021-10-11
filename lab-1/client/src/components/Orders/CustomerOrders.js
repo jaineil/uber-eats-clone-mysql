@@ -5,6 +5,7 @@ import cookie from "react-cookies";
 import Axios from "axios";
 import CustNavbar from "../Navbar/CustNavbar";
 import classes from "../Orders/RestaurantOrders.module.css";
+import { awsServer } from "../../config/awsIP";
 
 export const CustomerOrders = (props) => {
 	const [orders, setOrders] = useState([]);
@@ -34,7 +35,7 @@ export const CustomerOrders = (props) => {
 		let temp = [];
 		try {
 			const response = await Axios.get(
-				`http://localhost:3000/fetchOrderHistory/${customerId}`
+				`http://${awsServer}/fetchOrderHistory/${customerId}`
 			);
 			const fetchedOrders = response.data;
 

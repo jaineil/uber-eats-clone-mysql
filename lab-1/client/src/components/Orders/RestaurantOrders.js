@@ -12,6 +12,7 @@ import cookie from "react-cookies";
 import Axios from "axios";
 import classes from "../Orders/RestaurantOrders.module.css";
 import RestNavbar from "../Navbar/RestNavbar";
+import { awsServer } from "../../config/awsIP";
 
 export const RestaurantOrders = () => {
 	const [orders, setOrders] = useState([]);
@@ -40,7 +41,7 @@ export const RestaurantOrders = () => {
 		let temp = [];
 		try {
 			const response = await Axios.get(
-				`http://localhost:3000/fetchCustomerOrders/${restaurantId}`
+				`http://${awsServer}/fetchCustomerOrders/${restaurantId}`
 			);
 			const fetchedOrders = response.data;
 
@@ -63,10 +64,7 @@ export const RestaurantOrders = () => {
 	const updateOrderStatus = async (payload) => {
 		try {
 			console.log("Shooting payload => ", payload);
-			await Axios.post(
-				"http://localhost:3000/updateOrderStatus",
-				payload
-			);
+			await Axios.post(`http://${awsServer}/updateOrderStatus`, payload);
 			window.location.reload(false);
 		} catch (err) {
 			console.error("Error when updating order status => ", err);

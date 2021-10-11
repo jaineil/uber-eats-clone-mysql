@@ -14,6 +14,7 @@ import { useHistory } from "react-router";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import "./Registration.component.css";
+import { awsServer } from "../../config/awsIP";
 
 export const CustomerRegistration = (props) => {
 	const history = useHistory();
@@ -51,7 +52,7 @@ export const CustomerRegistration = (props) => {
 		};
 		console.log("Created payload!");
 		try {
-			await Axios.post("http://localhost:3000/createCustomer", payload);
+			await Axios.post(`http://${awsServer}/createCustomer`, payload);
 			console.log("Successfully registered");
 			history.push("/customerSignin");
 		} catch (err) {

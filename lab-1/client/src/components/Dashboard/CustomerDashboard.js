@@ -16,6 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import "./CustomerDashboard.css";
 import Axios from "axios";
+import { awsServer } from "../../config/awsIP";
 
 export const CustomerDashboard = (props) => {
 	const customerId = cookie.load("customerId");
@@ -57,7 +58,7 @@ export const CustomerDashboard = (props) => {
 		console.log("About to fetch restaurants");
 		try {
 			const response = await Axios.get(
-				`http://localhost:3000/fetchRestaurants/${customerId}`
+				`http://${awsServer}/fetchRestaurants/${customerId}`
 			);
 			setRestaurants(response.data);
 			setDisplayRestaurants(response.data);
@@ -77,7 +78,7 @@ export const CustomerDashboard = (props) => {
 		console.log("About to fetch customer location");
 		try {
 			const response = await Axios.get(
-				`http://localhost:3000/fetchCustomerLocation/${customerId}`
+				`http://${awsServer}/fetchCustomerLocation/${customerId}`
 			);
 			setLocation(response.data[0].CITY);
 		} catch (err) {
@@ -306,7 +307,7 @@ export const CustomerDashboard = (props) => {
 		console.log(JSON.stringify(payload));
 		try {
 			const res = await Axios.post(
-				"http://localhost:3000/addFavorite",
+				`http://${awsServer}/addFavorite`,
 				payload
 			);
 			console.log("Successfully added to favorites ", res.data);

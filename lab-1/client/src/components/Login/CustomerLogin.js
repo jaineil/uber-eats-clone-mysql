@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap";
 import Axios from "axios";
 import "../Registration/Registration.component.css";
+import { awsServer } from "../../config/awsIP";
 
 export const CustomerLogin = (props) => {
 	const history = useHistory();
@@ -36,7 +37,7 @@ export const CustomerLogin = (props) => {
 		console.log("Created payload! => ", JSON.stringify(payload));
 		try {
 			const response = await Axios.post(
-				"http://localhost:3000/customerSignin",
+				`http://${awsServer}/customerSignin`,
 				payload
 			);
 			console.log(response);

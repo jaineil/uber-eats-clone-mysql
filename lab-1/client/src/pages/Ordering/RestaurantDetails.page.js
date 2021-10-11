@@ -6,6 +6,7 @@ import Cart from "../../components/Ordering/Cart/Cart";
 import CartProvider from "../../store/CartProvider";
 import Axios from "axios";
 import cookie from "react-cookies";
+import { awsServer } from "../../config/awsIP";
 
 export const RestaurantDetails = (props) => {
 	const history = useHistory();
@@ -34,7 +35,7 @@ export const RestaurantDetails = (props) => {
 		const fetchRestaurantMeta = async () => {
 			try {
 				const response = await Axios.get(
-					`http://localhost:3000/fetchRestaurantMeta/${restaurantId}`
+					`http://${awsServer}/fetchRestaurantMeta/${restaurantId}`
 				);
 				const meta = response.data[0];
 				setRestaurantMeta(meta);
@@ -51,7 +52,7 @@ export const RestaurantDetails = (props) => {
 		const fetchAllMeals = async () => {
 			try {
 				const response = await Axios.get(
-					`http://localhost:3000/fetchDishes/${restaurantId}`
+					`http://${awsServer}/fetchDishes/${restaurantId}`
 				);
 				setMeals(response.data);
 				console.log("Restaurant Meta => ", meals);

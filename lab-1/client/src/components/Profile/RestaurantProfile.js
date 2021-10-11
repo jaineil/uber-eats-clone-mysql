@@ -18,6 +18,7 @@ import { uploadFile } from "react-s3";
 import "../Registration/Registration.component.css";
 import { config } from "../../config/awsConfig";
 import RestNavbar from "../Navbar/RestNavbar";
+import { awsServer } from "../../config/awsIP";
 
 export const RestaurantProfile = (props) => {
 	const history = useHistory();
@@ -54,7 +55,7 @@ export const RestaurantProfile = (props) => {
 		console.log("About to fetch meta => ", restaurantId);
 		try {
 			const metaResponse = await Axios.get(
-				`http://localhost:3000/fetchRestaurantMeta/${restaurantId}`
+				`http://${awsServer}/fetchRestaurantMeta/${restaurantId}`
 			);
 
 			const meta = metaResponse.data[0];
@@ -82,7 +83,7 @@ export const RestaurantProfile = (props) => {
 		console.log("About to fetch address => ", restaurantId);
 		try {
 			const addr = await Axios.get(
-				`http://localhost:3000/fetchRestaurantAddress/${restaurantId}`
+				`http://${awsServer}/fetchRestaurantAddress/${restaurantId}`
 			);
 			const addrMeta = addr.data[0];
 			setStreet(addrMeta.STREET);
@@ -173,7 +174,7 @@ export const RestaurantProfile = (props) => {
 
 		try {
 			const response = await Axios.post(
-				"http://localhost:3000/updateRestaurant",
+				`http://${awsServer}/updateRestaurant`,
 				payload
 			);
 
