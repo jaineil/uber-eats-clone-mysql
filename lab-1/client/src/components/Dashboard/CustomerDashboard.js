@@ -113,12 +113,14 @@ export const CustomerDashboard = (props) => {
 				) {
 					console.log("Pushing ", r.NAME);
 					temp.push(r);
+					setDisplayRestaurants(temp);
 				}
 			}
 		} else {
 			temp = restaurants;
+			setDisplayRestaurants(temp);
+			window.location.reload(false);
 		}
-		setDisplayRestaurants(temp);
 	};
 
 	const vegSelectHandler = async () => {

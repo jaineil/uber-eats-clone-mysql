@@ -56,12 +56,6 @@ export const RestaurantLogin = (props) => {
 
 	return (
 		<Container fluid>
-			<Row>
-				<Col>
-					<h1 className="text">Login to UberEats for Restaurant</h1>
-					<h4>{message}</h4>
-				</Col>
-			</Row>
 			<Navbar bg="light">
 				<Container>
 					<Navbar.Brand href="/welcome">
@@ -75,6 +69,12 @@ export const RestaurantLogin = (props) => {
 					</Navbar.Brand>
 				</Container>
 			</Navbar>
+			<Row>
+				<Col>
+					<h1 className="text">Login to UberEats for Restaurant</h1>
+					<h4>{message}</h4>
+				</Col>
+			</Row>
 			<Row>
 				<Col>
 					<Form onSubmit={(e) => loginToAccount(e)}>
